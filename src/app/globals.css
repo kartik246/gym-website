@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  
+  --color-primary: #CCFF00; /* Neon Lime/Yellow */
+  --color-primary-foreground: #000000;
+  
+  --color-secondary: #0A0A0A;
+  --color-accent: #3B82F6; /* Electric Blue */
+  
+  --color-muted: #1F1F1F;
+  --color-muted-foreground: #A1A1AA;
+
+  --color-border: #1F1F1F;
+  --color-input: #1F1F1F;
+  --color-ring: #CCFF00;
+}
+
+:root {
+  --background: #000000;
+  --foreground: #FFFFFF;
+  
+  --card: #0A0A0A;
+  --card-foreground: #FFFFFF;
+  
+  --popover: #0A0A0A;
+  --popover-foreground: #FFFFFF;
+  
+  --primary: #CCFF00;
+  --primary-foreground: #000000;
+  
+  --secondary: #1F1F1F;
+  --secondary-foreground: #FFFFFF;
+  
+  --muted: #1F1F1F;
+  --muted-foreground: #A1A1AA;
+  
+  --accent: #1F1F1F;
+  --accent-foreground: #FFFFFF;
+  
+  --destructive: #EF4444;
+  --destructive-foreground: #FFFFFF;
+  
+  --border: #1F1F1F;
+  --input: #1F1F1F;
+  --ring: #CCFF00;
+  
+  --radius: 0.5rem;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+.neon-glow {
+  box-shadow: 0 0 15px rgba(204, 255, 0, 0.3);
+}
+
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent;
+}
