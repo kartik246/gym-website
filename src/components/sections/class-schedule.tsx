@@ -10,7 +10,7 @@ const classes = [
   {
     id: 1,
     name: "Heavy Lifting & Barbells",
-    instructor: "Alex 'The Tank' Rivera",
+    instructor: "Sumit Khatri",
     time: "08:00 AM - 09:30 AM",
     category: "Strength",
     difficulty: "Advanced",
@@ -18,8 +18,8 @@ const classes = [
   },
   {
     id: 2,
-    name: "Dumbbell HIIT Blast",
-    instructor: "Sarah Jenkins",
+    name: "Cardio & HIIT Blast",
+    instructor: "Kartik Chhabra",
     time: "10:00 AM - 11:00 AM",
     category: "Cardio",
     difficulty: "Intermediate",
@@ -46,7 +46,7 @@ const classes = [
   {
     id: 5,
     name: "Bodybuilding Hypertrophy",
-    instructor: "David Goggins Clone",
+    instructor: "Sumit Khatri",
     time: "05:00 AM - 07:00 AM",
     category: "Strength",
     difficulty: "Elite",
@@ -143,7 +143,7 @@ export function ClassSchedule() {
                     </div>
                     <div className="flex items-center text-xs text-muted-foreground font-semibold">
                       <User className="mr-2 h-4 w-4 text-primary shrink-0" />
-                      Instructor: {item.instructor}
+                      Instructor: <span className="text-white ml-1 font-bold">{item.instructor}</span>
                     </div>
                   </CardContent>
 
