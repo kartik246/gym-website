@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
+import { AppDownloadPopup } from "@/components/ui/app-download-popup";
 
 export const metadata: Metadata = {
   title: "Team Iron Fit Gym | Rajouri Garden, New Delhi",
@@ -19,6 +20,7 @@ export default function RootLayout({
         <Navbar />
         {children}
         <Footer />
+        <AppDownloadPopup />
       </body>
     </html>
   );
