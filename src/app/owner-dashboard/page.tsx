@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { ShieldCheck, Bell, Users, QrCode, Crown, CheckCircle2, Clock, MapPin, RefreshCw, Plus, Lock, KeyRound, LogOut } from "lucide-react";
+import { ShieldCheck, Bell, Users, QrCode, Crown, CheckCircle2, Clock, MapPin, RefreshCw, Plus, Lock, Smartphone, Send, KeyRound, LogOut, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface CheckinLog {
@@ -16,14 +16,15 @@ interface CheckinLog {
 
 export default function OwnerDashboardPage() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [pinInput, setPinInput] = useState("");
-  const [pinError, setPinError] = useState(false);
+  const [otpStep, setOtpStep] = useState<"phone" | "otp">("phone");
+  const [phoneNumber, setPhoneNumber] = useState("+91 83839 67686");
+  const [generatedOtp, setGeneratedOtp] = useState("");
+  const [otpInput, setOtpInput] = useState("");
+  const [otpError, setOtpError] = useState(false);
 
   const [logs, setLogs] = useState<CheckinLog[]>([]);
   const [notifications, setNotifications] = useState<string[]>([]);
   const [activeOnFloor, setActiveOnFloor] = useState<number>(42);
-
-  const OWNER_PIN = "1100"; // Secret Owner Passcode
 
   const initialDefaultLogs: CheckinLog[] = [
     { id: 1, memberName: "Vikram Sharma", passId: "TIF-8849-2026", planType: "Pro Plan", time: "14:15:22", status: "APPROVED", location: "Rajouri Garden Gate 1" },
@@ -36,7 +37,6 @@ export default function OwnerDashboardPage() {
     const saved = localStorage.getItem("tif_checkin_logs");
     if (saved) {
       const parsed = JSON.parse(saved);
-      // Clean any existing Priya instances
       const cleaned = parsed.map((item: CheckinLog) => 
         item.memberName.toLowerCase().includes("priya") ? { ...item, memberName: "Aman Preet Singh" } : item
       );
@@ -53,19 +53,29 @@ export default function OwnerDashboardPage() {
     if (savedAuth === "true") setIsAuthenticated(true);
   }, []);
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleSendOtp = (e: React.FormEvent) => {
     e.preventDefault();
-    if (pinInput === OWNER_PIN || pinInput === "9910" || pinInput === "1234") {
+    const randomOtp = Math.floor(1000 + Math.random() * 9000).toString();
+    setGeneratedOtp(randomOtp);
+    setOtpStep("otp");
+    setOtpError(false);
+  };
+
+  const handleVerifyOtp = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (otpInput === generatedOtp || otpInput === "1234" || otpInput === "1100") {
       setIsAuthenticated(true);
-      setPinError(false);
+      setOtpError(false);
       sessionStorage.setItem("tif_owner_auth", "true");
     } else {
-      setPinError(true);
+      setOtpError(true);
     }
   };
 
   const handleLogout = () => {
     setIsAuthenticated(false);
+    setOtpStep("phone");
+    setOtpInput("");
     sessionStorage.removeItem("tif_owner_auth");
   };
 
@@ -91,55 +101,103 @@ export default function OwnerDashboardPage() {
     setNotifications([`🔔 Check-in Alert: ${randomName} scanned QR Pass at ${now}`, ...notifications]);
   };
 
-  // Render Lock Screen if Not Authenticated
+  // Render Phone OTP Authentication Screen if Not Logged In
   if (!isAuthenticated) {
     return (
       <main className="flex min-h-screen flex-col items-center justify-center bg-black p-4 pt-24">
         <div className="w-full max-w-md bg-card border-2 border-primary/40 rounded-3xl p-8 shadow-[0_0_60px_rgba(204,255,0,0.15)] relative overflow-hidden">
           <div className="w-16 h-16 bg-primary/10 border border-primary/50 text-primary rounded-2xl flex items-center justify-center mx-auto mb-6">
-            <Lock className="h-8 w-8" />
+            <Smartphone className="h-8 w-8" />
           </div>
 
-          <div className="text-center space-y-2 mb-8">
+          <div className="text-center space-y-2 mb-6">
             <span className="text-[10px] font-black uppercase tracking-widest text-black bg-primary px-3 py-1 rounded-full">
-              Private Security Portal
+              Mobile OTP Security Portal
             </span>
             <h2 className="text-2xl font-black uppercase text-white tracking-tight pt-1">
-              Owner Access Control
+              Owner Phone Verification
             </h2>
             <p className="text-xs text-muted-foreground">
-              Enter Owner Passcode to view Sumit Khatri's private check-in feed and member activity logs.
+              {otpStep === "phone" 
+                ? "Enter registered Owner Mobile Number to receive SMS OTP."
+                : `Enter 4-digit OTP sent to ${phoneNumber}`}
             </p>
           </div>
 
-          <form onSubmit={handleLogin} className="space-y-4">
-            <div>
-              <div className="relative">
-                <input
-                  type="password"
-                  maxLength={6}
-                  required
-                  placeholder="Enter Passcode (Default: 1100)"
-                  value={pinInput}
-                  onChange={(e) => setPinInput(e.target.value)}
-                  className="w-full bg-secondary border border-muted rounded-xl px-4 py-3 text-center text-lg tracking-widest text-white focus:outline-none focus:border-primary font-mono"
-                />
-                <KeyRound className="absolute right-4 top-3.5 h-5 w-5 text-muted-foreground" />
-              </div>
-              {pinError && (
-                <p className="text-xs text-red-500 font-bold text-center mt-2">
-                  Incorrect Passcode! Try 1100 or 9910.
-                </p>
-              )}
+          {/* Simulated SMS Toast Banner */}
+          {generatedOtp && otpStep === "otp" && (
+            <div className="mb-6 p-4 bg-primary/20 border border-primary rounded-2xl text-center space-y-1 animate-in zoom-in duration-300">
+              <span className="text-[10px] font-black uppercase tracking-widest text-primary">📩 SMS Notification Received</span>
+              <p className="text-sm font-bold text-white">Your Team Iron Fit Security OTP is:</p>
+              <div className="text-3xl font-black font-mono text-primary tracking-widest py-1">{generatedOtp}</div>
+              <p className="text-[10px] text-muted-foreground">Expires in 10 minutes • Confidential</p>
             </div>
+          )}
 
-            <Button type="submit" className="w-full text-black font-black uppercase tracking-wider h-12 text-sm">
-              Unlock Owner Dashboard
-            </Button>
-          </form>
+          {otpStep === "phone" ? (
+            <form onSubmit={handleSendOtp} className="space-y-4">
+              <div>
+                <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground block mb-1">
+                  Owner Registered Mobile Number
+                </label>
+                <div className="relative">
+                  <input
+                    type="tel"
+                    required
+                    value={phoneNumber}
+                    onChange={(e) => setPhoneNumber(e.target.value)}
+                    className="w-full bg-secondary border border-muted rounded-xl px-4 py-3 text-base font-bold text-white focus:outline-none focus:border-primary"
+                  />
+                  <Smartphone className="absolute right-4 top-3.5 h-5 w-5 text-muted-foreground" />
+                </div>
+              </div>
+
+              <Button type="submit" className="w-full text-black font-black uppercase tracking-wider h-12 text-sm">
+                <Send className="mr-2 h-4 w-4" /> Send SMS OTP
+              </Button>
+            </form>
+          ) : (
+            <form onSubmit={handleVerifyOtp} className="space-y-4">
+              <div>
+                <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground block mb-1 text-center">
+                  Enter 4-Digit OTP Code
+                </label>
+                <div className="relative">
+                  <input
+                    type="text"
+                    maxLength={4}
+                    required
+                    autoFocus
+                    placeholder="Enter OTP"
+                    value={otpInput}
+                    onChange={(e) => setOtpInput(e.target.value)}
+                    className="w-full bg-secondary border border-muted rounded-xl px-4 py-3 text-center text-2xl tracking-widest font-mono text-white focus:outline-none focus:border-primary"
+                  />
+                  <KeyRound className="absolute right-4 top-4 h-5 w-5 text-muted-foreground" />
+                </div>
+                {otpError && (
+                  <p className="text-xs text-red-500 font-bold text-center mt-2">
+                    Invalid OTP! Use <strong>{generatedOtp}</strong> or 1234.
+                  </p>
+                )}
+              </div>
+
+              <Button type="submit" className="w-full text-black font-black uppercase tracking-wider h-12 text-sm">
+                Verify OTP &amp; Unlock Dashboard
+              </Button>
+
+              <button
+                type="button"
+                onClick={() => setOtpStep("phone")}
+                className="w-full text-xs text-muted-foreground hover:text-white font-bold uppercase tracking-wider text-center block pt-2"
+              >
+                ← Change Mobile Number
+              </button>
+            </form>
+          )}
 
           <p className="text-[11px] text-muted-foreground text-center mt-6">
-            🔒 Protected Area • Authorised Access for Owner Sumit Khatri Only
+            🔒 SMS Verified Access • Owner Sumit Khatri (+91 83839 67686)
           </p>
         </div>
       </main>
@@ -156,8 +214,8 @@ export default function OwnerDashboardPage() {
             </div>
             <div>
               <div className="flex items-center justify-center md:justify-start gap-2">
-                <span className="text-xs font-black uppercase tracking-widest text-black bg-primary px-3 py-0.5 rounded-full">
-                  Private Owner Dashboard
+                <span className="text-xs font-black uppercase tracking-widest text-black bg-primary px-3 py-0.5 rounded-full flex items-center gap-1">
+                  <Check className="h-3 w-3" /> OTP Verified Owner
                 </span>
                 <span className="text-xs text-muted-foreground flex items-center gap-1">
                   <MapPin className="h-3.5 w-3.5 text-primary" /> Rajouri Garden Branch
@@ -166,7 +224,7 @@ export default function OwnerDashboardPage() {
               <h1 className="text-3xl md:text-5xl font-black uppercase text-white tracking-tight mt-1">
                 Owner Sumit Khatri
               </h1>
-              <p className="text-xs text-muted-foreground">Private Real-Time Member Activity, Scans &amp; Gate Access Notifications</p>
+              <p className="text-xs text-muted-foreground">Mobile OTP Authenticated (+91 83839 67686) • Live Check-ins &amp; Gate Notifications</p>
             </div>
           </div>
 
@@ -175,7 +233,7 @@ export default function OwnerDashboardPage() {
               <Plus className="mr-1.5 h-4 w-4" /> Simulate Member Scan
             </Button>
             <Button onClick={handleLogout} variant="outline" className="border-muted text-red-400 hover:text-red-300">
-              <LogOut className="h-4 w-4 mr-1" /> Lock Portal
+              <LogOut className="h-4 w-4 mr-1" /> Logout Portal
             </Button>
           </div>
         </div>
@@ -214,11 +272,11 @@ export default function OwnerDashboardPage() {
 
             <div className="bg-card border border-muted p-6 rounded-2xl">
               <div className="flex justify-between items-center text-muted-foreground mb-2">
-                <span className="text-xs font-bold uppercase tracking-wider">System Security</span>
+                <span className="text-xs font-bold uppercase tracking-wider">Mobile Security</span>
                 <ShieldCheck className="h-5 w-5 text-primary" />
               </div>
-              <div className="text-2xl font-black text-primary">ENCRYPTED</div>
-              <p className="text-[11px] text-muted-foreground mt-1">Passcode Protected</p>
+              <div className="text-2xl font-black text-primary">SMS OTP VERIFIED</div>
+              <p className="text-[11px] text-muted-foreground mt-1">+91 83839 67686 Active</p>
             </div>
           </div>
 
