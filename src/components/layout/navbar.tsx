@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Dumbbell, Menu, X } from "lucide-react";
+import { Dumbbell, Menu, X, Shield } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface NavbarProps {
@@ -49,11 +49,18 @@ export function Navbar({ onOpenSignup }: NavbarProps) {
       )}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2">
-          <Dumbbell className="h-8 w-8 text-primary" />
-          <span className="text-2xl font-black uppercase tracking-tighter text-white">
-            Power<span className="text-primary">Gym</span>
-          </span>
+        <Link href="/" className="flex items-center gap-2.5">
+          <div className="relative flex items-center justify-center w-10 h-10 bg-primary/20 border border-primary/50 rounded-xl">
+            <Dumbbell className="h-6 w-6 text-primary" />
+          </div>
+          <div className="flex flex-col">
+            <span className="text-xl md:text-2xl font-black uppercase tracking-tighter text-white leading-none">
+              Team Iron<span className="text-primary">Fit</span>
+            </span>
+            <span className="text-[10px] font-extrabold uppercase tracking-widest text-primary/80">
+              GYM &amp; Fitness
+            </span>
+          </div>
         </Link>
 
         {/* Desktop Nav */}

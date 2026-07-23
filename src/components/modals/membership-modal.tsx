@@ -73,7 +73,7 @@ export function MembershipModal({ isOpen, onClose, defaultPlan = "Pro" }: Member
                   Registration Complete
                 </span>
                 <h3 className="text-3xl font-black uppercase text-white tracking-tight mt-4">
-                  Welcome to Power GYM!
+                  Welcome to Team Iron Fit!
                 </h3>
                 <p className="text-sm text-muted-foreground mt-2">
                   Your pass for the <span className="text-primary font-bold">{selectedPlan} Plan</span> has been generated. Confirmation sent to {formData.email || "your email"}.
@@ -90,8 +90,12 @@ export function MembershipModal({ isOpen, onClose, defaultPlan = "Pro" }: Member
                   <span className="font-bold text-primary">₹{plansData[selectedPlan]?.price} / month</span>
                 </div>
                 <div className="flex justify-between">
+                  <span className="text-muted-foreground">Location:</span>
+                  <span className="font-bold text-white">Shivaji Enclave, Rajouri Garden</span>
+                </div>
+                <div className="flex justify-between">
                   <span className="text-muted-foreground">Pass Code:</span>
-                  <span className="font-mono font-bold text-white">PG-2026-X88</span>
+                  <span className="font-mono font-bold text-white">TIF-2026-X88</span>
                 </div>
               </div>
 
@@ -106,7 +110,7 @@ export function MembershipModal({ isOpen, onClose, defaultPlan = "Pro" }: Member
                 <div className="flex items-center gap-2">
                   <Dumbbell className="h-5 w-5 text-primary" />
                   <span className="text-xs font-black uppercase tracking-widest text-primary">
-                    Step {step} of 2 — Membership Registration
+                    Step {step} of 2 — Team Iron Fit Pass
                   </span>
                 </div>
                 <h3 className="text-2xl font-black uppercase text-white tracking-tight mt-1">
@@ -186,7 +190,7 @@ export function MembershipModal({ isOpen, onClose, defaultPlan = "Pro" }: Member
                       <input
                         type="tel"
                         required
-                        placeholder="+91 98765 43210"
+                        placeholder="+91 83839 67686"
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                         className="w-full bg-secondary border border-muted rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-primary"
@@ -206,7 +210,7 @@ export function MembershipModal({ isOpen, onClose, defaultPlan = "Pro" }: Member
                           className="accent-primary h-4 w-4"
                         />
                         <span className="text-xs font-medium text-white">
-                          Personal Trainer Consultation (+₹499)
+                          Personal Trainer (Sumit / Kartik) (+₹499)
                         </span>
                       </label>
                       <label className="flex items-center gap-3 p-3 bg-secondary rounded-xl cursor-pointer border border-muted hover:border-primary/40">

@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Play, Users, Trophy, Flame, Star } from "lucide-react";
+import { ArrowRight, Play, Users, Trophy, Flame, Star, MapPin } from "lucide-react";
 
 interface HeroProps {
   onOpenSignup: () => void;
@@ -38,9 +38,13 @@ export function Hero({ onOpenSignup, onOpenTrailer }: HeroProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
+          className="flex flex-wrap justify-center gap-2 mb-6"
         >
-          <span className="inline-block px-4 py-1.5 mb-6 text-xs font-black tracking-widest uppercase bg-primary text-black rounded-full shadow-[0_0_20px_rgba(204,255,0,0.4)]">
-            🔥 #1 Rated Fitness &amp; Bodybuilding Facility
+          <span className="inline-block px-4 py-1.5 text-xs font-black tracking-widest uppercase bg-primary text-black rounded-full shadow-[0_0_20px_rgba(204,255,0,0.4)]">
+            🔥 Team Iron Fit Gym
+          </span>
+          <span className="inline-flex items-center gap-1 px-4 py-1.5 text-xs font-bold tracking-widest uppercase bg-secondary text-white rounded-full border border-muted">
+            <MapPin className="h-3.5 w-3.5 text-primary" /> Rajouri Garden, New Delhi
           </span>
         </motion.div>
         
@@ -57,9 +61,9 @@ export function Hero({ onOpenSignup, onOpenTrailer }: HeroProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="max-w-[640px] text-muted-foreground text-base sm:text-lg md:text-xl mb-10 leading-relaxed font-medium"
+          className="max-w-[660px] text-muted-foreground text-base sm:text-lg md:text-xl mb-10 leading-relaxed font-medium"
         >
-          Unleash your inner athlete in our 15,000 sq ft facility. Heavy iron, 5kg-75kg dumbbell racks, Eleiko power cages, and elite bodybuilding coaches.
+          Welcome to <strong className="text-white">Team Iron Fit Gym</strong> in Shivaji Enclave, Rajouri Garden. Elite heavy iron, cardio arena, and master coaches <strong className="text-primary">Sumit Khatri</strong> &amp; <strong className="text-primary">Kartik Chhabra</strong>.
         </motion.p>
 
         <motion.div
@@ -69,7 +73,7 @@ export function Hero({ onOpenSignup, onOpenTrailer }: HeroProps) {
           className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
         >
           <Button size="lg" className="group text-black font-black uppercase tracking-wider h-14 px-8" onClick={onOpenSignup}>
-            Join the Movement
+            Join Team Iron Fit
             <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
           </Button>
           <Button size="lg" variant="outline" className="h-14 px-8 border-muted text-white hover:border-primary" onClick={onOpenTrailer}>

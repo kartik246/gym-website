@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Power GYM | Push Your Limits",
-  description: "Experience the ultimate fitness transformation at Power GYM. State-of-the-art facilities, expert trainers, and a high-energy community.",
+  title: "Team Iron Fit Gym | Rajouri Garden, New Delhi",
+  description: "Experience the ultimate fitness transformation at Team Iron Fit Gym, Shivaji Enclave, Rajouri Garden, New Delhi. Heavy lifting, cardio, expert trainers Sumit Khatri & Kartik Chhabra.",
 };
 
 export default function RootLayout({
