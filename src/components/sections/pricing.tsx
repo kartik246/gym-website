@@ -1,6 +1,12 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card";
 import { Check } from "lucide-react";
+
+interface PricingProps {
+  onSelectPlan?: (planName: string) => void;
+}
 
 const plans = [
   {
@@ -38,10 +44,10 @@ const plans = [
   },
 ];
 
-export function Pricing() {
+export function Pricing({ onSelectPlan }: PricingProps) {
   return (
     <section className="py-24 bg-secondary/50" id="pricing">
-      <div className="container px-4 md:px-6">
+      <div className="container px-4 md:px-6 mx-auto">
         <div className="flex flex-col items-center text-center mb-16">
           <h2 className="text-primary font-bold uppercase tracking-widest text-sm mb-4">Membership</h2>
           <h3 className="text-4xl md:text-6xl font-black uppercase text-white tracking-tight">Simple Pricing</h3>
@@ -55,11 +61,11 @@ export function Pricing() {
             <Card 
               key={plan.name} 
               className={`flex flex-col relative ${
-                plan.highlight ? "border-primary scale-105 z-10 shadow-[0_0_30px_rgba(204,255,0,0.1)]" : "border-muted"
+                plan.highlight ? "border-primary scale-105 z-10 shadow-[0_0_30px_rgba(204,255,0,0.15)]" : "border-muted"
               }`}
             >
               {plan.highlight && (
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-primary text-black text-xs font-black uppercase px-3 py-1 rounded-full">
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-primary text-black text-xs font-black uppercase px-3 py-1 rounded-full shadow-md">
                   Most Popular
                 </div>
               )}
@@ -82,8 +88,12 @@ export function Pricing() {
                 </ul>
               </CardContent>
               <CardFooter>
-                <Button className="w-full" variant={plan.highlight ? "primary" : "outline"}>
-                  Choose Plan
+                <Button 
+                  className="w-full text-black font-black uppercase tracking-wider" 
+                  variant={plan.highlight ? "primary" : "outline"}
+                  onClick={() => onSelectPlan && onSelectPlan(plan.name)}
+                >
+                  Choose {plan.name} Plan
                 </Button>
               </CardFooter>
             </Card>

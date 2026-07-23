@@ -2,33 +2,37 @@
 
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Play } from "lucide-react";
+import { ArrowRight, Play, Users, Trophy, Flame, Star } from "lucide-react";
 
-export function Hero() {
+interface HeroProps {
+  onOpenSignup: () => void;
+  onOpenTrailer: () => void;
+}
+
+export function Hero({ onOpenSignup, onOpenTrailer }: HeroProps) {
   return (
-    <section className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-black">
-      {/* Background Gradient/Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-black to-black z-0" />
+    <section className="relative min-h-screen w-full flex flex-col justify-between overflow-hidden bg-black pt-28 pb-12">
+      {/* Background Gradient & Animated Shapes */}
+      <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-black to-black z-0 pointer-events-none" />
       
-      {/* Animated Shapes */}
       <motion.div 
         animate={{ 
-          scale: [1, 1.2, 1],
+          scale: [1, 1.25, 1],
           rotate: [0, 90, 0],
-          opacity: [0.1, 0.2, 0.1]
+          opacity: [0.12, 0.22, 0.12]
         }}
-        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-        className="absolute -top-1/4 -right-1/4 w-1/2 h-1/2 bg-primary rounded-full blur-[120px] z-0"
+        transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
+        className="absolute -top-1/4 -right-1/4 w-1/2 h-1/2 bg-primary rounded-full blur-[140px] z-0 pointer-events-none"
       />
 
-      <div className="container relative z-10 px-4 md:px-6 flex flex-col items-center text-center">
+      <div className="container relative z-10 px-4 md:px-6 mx-auto flex flex-col items-center text-center my-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <span className="inline-block px-3 py-1 mb-6 text-xs font-bold tracking-widest uppercase bg-primary text-black rounded-full">
-            No Pain No Gain
+          <span className="inline-block px-4 py-1.5 mb-6 text-xs font-black tracking-widest uppercase bg-primary text-black rounded-full shadow-[0_0_20px_rgba(204,255,0,0.4)]">
+            🔥 #1 Rated Fitness Facility
           </span>
         </motion.div>
         
@@ -36,7 +40,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-5xl md:text-8xl font-black uppercase tracking-tighter text-white mb-6"
+          className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black uppercase tracking-tighter text-white mb-6 leading-[0.9]"
         >
           Push Your <span className="text-primary italic">Limits</span>
         </motion.h1>
@@ -45,37 +49,72 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="max-w-[600px] text-muted-foreground text-lg md:text-xl mb-10"
+          className="max-w-[640px] text-muted-foreground text-base sm:text-lg md:text-xl mb-10 leading-relaxed font-medium"
         >
-          Unleash your inner athlete in our state-of-the-art facility. Expert trainers, world-class equipment, and a community that drives you to be your best.
+          Unleash your inner athlete in our 15,000 sq ft state-of-the-art facility. World-class heavy lifting, pro HIIT zones, and elite coaches driving your transformation.
         </motion.p>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.6 }}
-          className="flex flex-col sm:flex-row gap-4"
+          className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
         >
-          <Button size="lg" className="group">
+          <Button size="lg" className="group text-black font-black uppercase tracking-wider h-14 px-8" onClick={onOpenSignup}>
             Join the Movement
             <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
           </Button>
-          <Button size="lg" variant="outline">
-            <Play className="mr-2 h-5 w-5 fill-primary" />
-            Watch Trailer
+          <Button size="lg" variant="outline" className="h-14 px-8 border-muted text-white hover:border-primary" onClick={onOpenTrailer}>
+            <Play className="mr-2 h-5 w-5 fill-primary text-primary" />
+            Watch Facility Trailer
           </Button>
         </motion.div>
       </div>
 
-      {/* Scroll Indicator */}
-      <motion.div 
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center text-muted-foreground"
-      >
-        <span className="text-xs uppercase tracking-widest mb-2 font-bold">Scroll</span>
-        <div className="w-0.5 h-12 bg-gradient-to-b from-primary to-transparent" />
-      </motion.div>
+      {/* High-Impact Key Performance Stats Bar */}
+      <div className="container relative z-10 px-4 md:px-6 mx-auto mt-16">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-6 bg-secondary/80 border border-muted/80 backdrop-blur-md rounded-2xl shadow-2xl">
+          <div className="flex items-center gap-3 p-2">
+            <div className="p-3 bg-primary/10 text-primary rounded-xl">
+              <Users className="h-6 w-6" />
+            </div>
+            <div className="text-left">
+              <div className="text-2xl md:text-3xl font-black text-white">5,000+</div>
+              <div className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground">Active Members</div>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-3 p-2">
+            <div className="p-3 bg-primary/10 text-primary rounded-xl">
+              <Trophy className="h-6 w-6" />
+            </div>
+            <div className="text-left">
+              <div className="text-2xl md:text-3xl font-black text-white">15+</div>
+              <div className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground">Master Coaches</div>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-3 p-2">
+            <div className="p-3 bg-primary/10 text-primary rounded-xl">
+              <Flame className="h-6 w-6" />
+            </div>
+            <div className="text-left">
+              <div className="text-2xl md:text-3xl font-black text-white">50+</div>
+              <div className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground">Weekly Classes</div>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-3 p-2">
+            <div className="p-3 bg-primary/10 text-primary rounded-xl">
+              <Star className="h-6 w-6 fill-primary" />
+            </div>
+            <div className="text-left">
+              <div className="text-2xl md:text-3xl font-black text-white">4.9 ★</div>
+              <div className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground">Member Rating</div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
   );
 }
