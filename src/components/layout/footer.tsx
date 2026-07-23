@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Dumbbell, Globe, MessageSquare, Info, Share2, MapPin, Phone, Mail, ExternalLink } from "lucide-react";
+import { Globe, MessageSquare, Info, Share2, MapPin, Phone, Mail, ExternalLink } from "lucide-react";
 
 export function Footer() {
   return (
@@ -7,9 +7,13 @@ export function Footer() {
       <div className="container px-4 md:px-6 mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           <div className="space-y-4">
-            <Link href="/" className="flex items-center gap-2.5">
-              <div className="flex items-center justify-center w-9 h-9 bg-primary/20 border border-primary/50 rounded-xl">
-                <Dumbbell className="h-5 w-5 text-primary" />
+            <Link href="/" className="flex items-center gap-3">
+              <div className="relative flex items-center justify-center w-10 h-10 rounded-xl overflow-hidden border border-primary/50 bg-black">
+                <img 
+                  src="/logo.jpg" 
+                  alt="Team Iron Fit Gym Logo" 
+                  className="w-full h-full object-cover"
+                />
               </div>
               <span className="text-xl font-black uppercase tracking-tighter text-white">
                 Team Iron<span className="text-primary">Fit</span> Gym
