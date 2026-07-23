@@ -1,62 +1,115 @@
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Dumbbell, Users, Trophy, Zap, HeartPulse, Clock } from "lucide-react";
+"use client";
+
+import { Dumbbell, Flame, Trophy, Zap, HeartPulse, Clock, Sparkles } from "lucide-react";
+import { motion } from "framer-motion";
 
 const amenities = [
   {
-    title: "Elite Equipment",
-    description: "Train with the best. We feature Hammer Strength, Eleiko, and Life Fitness.",
+    title: "Dumbbells & Free Weights",
+    subtitle: "5kg – 75kg Heavy Rack",
+    description: "Solid rubber-coated dumbbells, hex dumbbells, kettlebells, and heavy-duty adjustable benches.",
+    image: "https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?auto=format&fit=crop&w=800&q=80",
+    badge: "Equipment",
     icon: Dumbbell,
   },
   {
-    title: "Expert Coaches",
-    description: "Certified trainers dedicated to pushing you beyond your potential.",
-    icon: Users,
-  },
-  {
-    title: "Pro Programs",
-    description: "Tailored workout plans designed for your specific fitness goals.",
+    title: "Olympic Power Racks",
+    subtitle: "Eleiko & Hammer Strength",
+    description: "Professional power cages, deadlift platforms, bumper plates, and competition Olympic bars.",
+    image: "https://images.unsplash.com/photo-1534367507873-d2d7e24c797f?auto=format&fit=crop&w=800&q=80",
+    badge: "Bodybuilding",
     icon: Trophy,
   },
   {
-    title: "High Energy",
-    description: "Immersive environment with premium sound and dynamic lighting.",
+    title: "Pro Cardio Arena",
+    subtitle: "Interactive Performance Floor",
+    description: "High-tech treadmills, StairMasters, Assault AirBikes, and Concept2 rowing machines with heart monitors.",
+    image: "https://images.unsplash.com/photo-1576678927484-cc909957088c?auto=format&fit=crop&w=800&q=80",
+    badge: "Conditioning",
+    icon: Flame,
+  },
+  {
+    title: "Bodybuilding Cable Zone",
+    subtitle: "Isolation Machines",
+    description: "8-stack cable crossovers, lat pulldowns, seated rows, leg presses, and hack squats for maximum hypertrophy.",
+    image: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=800&q=80",
+    badge: "Hypertrophy",
     icon: Zap,
   },
   {
-    title: "Wellness Spa",
-    description: "Recovery is key. Access our sauna, cold plunge, and massage therapy.",
+    title: "Recovery & Spa Lounge",
+    subtitle: "Infrared Sauna & Plunge",
+    description: "Post-workout recovery zone featuring infrared sauna, cold plunge tubs, and perc-massage therapy tools.",
+    image: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80",
+    badge: "Wellness",
     icon: HeartPulse,
   },
   {
-    title: "24/7 Access",
-    description: "Your schedule, your rules. The grind never stops at Power GYM.",
+    title: "Combat & Turf Arena",
+    subtitle: "Heavy Bags & Sled Track",
+    description: "40m artificial turf track, heavy punching bags, battle ropes, and plyometric boxes for explosive power.",
+    image: "https://images.unsplash.com/photo-1549060279-7e168fcee0c2?auto=format&fit=crop&w=800&q=80",
+    badge: "Functional",
     icon: Clock,
   },
 ];
 
 export function Amenities() {
   return (
-    <section className="py-24 bg-black">
-      <div className="container px-4 md:px-6">
+    <section className="py-24 bg-black relative" id="amenities">
+      <div className="container px-4 md:px-6 mx-auto">
         <div className="flex flex-col items-center text-center mb-16">
-          <h2 className="text-primary font-bold uppercase tracking-widest text-sm mb-4">What we offer</h2>
-          <h3 className="text-4xl md:text-6xl font-black uppercase text-white tracking-tight">World Class Facilities</h3>
-          <div className="w-24 h-1 bg-primary mt-6" />
+          <span className="text-primary font-bold uppercase tracking-widest text-sm mb-4 flex items-center gap-2">
+            <Sparkles className="h-4 w-4" /> 15,000 SQ FT Facility
+          </span>
+          <h2 className="text-4xl md:text-6xl font-black uppercase text-white tracking-tight">
+            World-Class <span className="text-primary italic">Equipment &amp; Arenas</span>
+          </h2>
+          <p className="text-muted-foreground mt-4 max-w-[640px]">
+            Equipped with top-tier heavy iron, dumbbells, cables, and recovery suites for bodybuilders and athletes.
+          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {amenities.map((item, index) => (
-            <Card key={index} className="bg-secondary border-muted group hover:border-primary/50 transition-all duration-300">
-              <CardHeader>
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary transition-colors">
-                  <item.icon className="h-6 w-6 text-primary group-hover:text-black transition-colors" />
+            <motion.div 
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: index * 0.1 }}
+              className="bg-card border border-muted hover:border-primary/50 transition-all duration-300 rounded-2xl overflow-hidden group flex flex-col justify-between"
+            >
+              <div>
+                {/* Image Header with Badge */}
+                <div className="relative h-56 w-full overflow-hidden bg-muted">
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-108"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-card via-black/20 to-transparent" />
+                  
+                  <span className="absolute top-4 left-4 bg-primary text-black font-black text-xs uppercase px-3 py-1 rounded-full shadow-md">
+                    {item.badge}
+                  </span>
                 </div>
-                <CardTitle>{item.title}</CardTitle>
-                <CardDescription className="text-muted-foreground pt-2">
-                  {item.description}
-                </CardDescription>
-              </CardHeader>
-            </Card>
+
+                {/* Content */}
+                <div className="p-6 space-y-2">
+                  <div className="flex items-center gap-2">
+                    <item.icon className="h-4 w-4 text-primary" />
+                    <span className="text-xs font-bold uppercase tracking-wider text-primary">{item.subtitle}</span>
+                  </div>
+                  <h3 className="text-xl font-black uppercase tracking-tight text-white group-hover:text-primary transition-colors">
+                    {item.title}
+                  </h3>
+                  <p className="text-xs text-muted-foreground leading-relaxed pt-1">
+                    {item.description}
+                  </p>
+                </div>
+              </div>
+            </motion.div>
           ))}
         </div>
       </div>
