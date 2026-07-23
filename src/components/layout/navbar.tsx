@@ -50,11 +50,11 @@ export function Navbar({ onOpenSignup }: NavbarProps) {
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <Link href="/" className="flex items-center gap-3">
-          <div className="relative flex items-center justify-center w-11 h-11 rounded-xl overflow-hidden border border-primary/50 shadow-[0_0_15px_rgba(204,255,0,0.25)] bg-black">
+          <div className="relative flex items-center justify-center w-11 h-11 rounded-xl overflow-hidden border border-primary/50 shadow-[0_0_15px_rgba(204,255,0,0.3)] bg-black p-0.5">
             <img 
-              src="/logo.jpg" 
+              src="/logo.svg" 
               alt="Team Iron Fit Gym Logo" 
-              className="w-full h-full object-cover"
+              className="w-full h-full object-contain"
             />
           </div>
           <div className="flex flex-col">

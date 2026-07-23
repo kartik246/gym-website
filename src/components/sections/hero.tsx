@@ -63,7 +63,7 @@ export function Hero({ onOpenSignup, onOpenTrailer }: HeroProps) {
           transition={{ duration: 0.5, delay: 0.4 }}
           className="max-w-[660px] text-muted-foreground text-base sm:text-lg md:text-xl mb-10 leading-relaxed font-medium"
         >
-          Welcome to <strong className="text-white">Team Iron Fit Gym</strong> in Shivaji Enclave, Rajouri Garden. Elite heavy iron, cardio arena, and master coaches <strong className="text-primary">Sumit Khatri</strong> &amp; <strong className="text-primary">Kartik Chhabra</strong>.
+          Welcome to <strong className="text-white">Team Iron Fit Gym</strong> in Shivaji Enclave, Rajouri Garden. Elite heavy iron, cardio arena, led by Owner &amp; Head Trainer <strong className="text-primary">Sumit Khatri</strong>.
         </motion.p>
 
         <motion.div
@@ -101,8 +101,8 @@ export function Hero({ onOpenSignup, onOpenTrailer }: HeroProps) {
               <Trophy className="h-6 w-6" />
             </div>
             <div className="text-left">
-              <div className="text-2xl md:text-3xl font-black text-white">15+</div>
-              <div className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground">Master Coaches</div>
+              <div className="text-2xl md:text-3xl font-black text-white">100%</div>
+              <div className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground">Owner Guided</div>
             </div>
           </div>
 

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Globe, MessageSquare, Info, Share2, MapPin, Phone, Mail, ExternalLink } from "lucide-react";
+import { Globe, MessageSquare, Info, Share2, MapPin, Phone, Mail, ExternalLink, Crown } from "lucide-react";
 
 export function Footer() {
   return (
@@ -8,11 +8,11 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           <div className="space-y-4">
             <Link href="/" className="flex items-center gap-3">
-              <div className="relative flex items-center justify-center w-10 h-10 rounded-xl overflow-hidden border border-primary/50 bg-black">
+              <div className="relative flex items-center justify-center w-10 h-10 rounded-xl overflow-hidden border border-primary/50 bg-black p-0.5 shadow-[0_0_15px_rgba(204,255,0,0.2)]">
                 <img 
-                  src="/logo.jpg" 
+                  src="/logo.svg" 
                   alt="Team Iron Fit Gym Logo" 
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain"
                 />
               </div>
               <span className="text-xl font-black uppercase tracking-tighter text-white">
@@ -20,7 +20,7 @@ export function Footer() {
               </span>
             </Link>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              New Delhi's premier bodybuilding &amp; fitness destination. Heavy iron, pro dumbbell racks, expert coaches, and an elite community.
+              New Delhi's premier bodybuilding &amp; fitness destination. Owned and led by Master Coach Sumit Khatri.
             </p>
             <div className="flex gap-4 pt-2">
               <Globe className="h-5 w-5 text-muted-foreground hover:text-primary cursor-pointer transition-colors" />
@@ -35,18 +35,16 @@ export function Footer() {
             <ul className="space-y-4">
               <li><Link href="#amenities" className="text-sm text-muted-foreground hover:text-primary transition-colors">Amenities &amp; Iron Zone</Link></li>
               <li><Link href="#schedule" className="text-sm text-muted-foreground hover:text-primary transition-colors">Class Timetable</Link></li>
-              <li><Link href="#trainers" className="text-sm text-muted-foreground hover:text-primary transition-colors">Coaches &amp; Trainers</Link></li>
+              <li><Link href="#trainers" className="text-sm text-muted-foreground hover:text-primary transition-colors">Leadership &amp; Owner</Link></li>
               <li><Link href="#pricing" className="text-sm text-muted-foreground hover:text-primary transition-colors">Membership Plans</Link></li>
             </ul>
           </div>
 
           <div>
-            <h4 className="text-white font-bold uppercase tracking-widest text-sm mb-6">Coaches &amp; Programs</h4>
+            <h4 className="text-white font-bold uppercase tracking-widest text-sm mb-6">Owner &amp; Leadership</h4>
             <ul className="space-y-4 text-sm text-muted-foreground">
-              <li><strong className="text-white">Sumit Khatri:</strong> Heavy Lifting &amp; Power Coach</li>
-              <li><strong className="text-white">Kartik Chhabra:</strong> Cardio &amp; HIIT Lead</li>
-              <li><strong className="text-white">Marcus Vance:</strong> Combat &amp; Boxing</li>
-              <li><span className="text-primary font-bold">24/7 Access Available</span></li>
+              <li className="flex items-center gap-1.5"><Crown className="h-4 w-4 text-primary shrink-0" /><strong className="text-white">Sumit Khatri:</strong> Owner &amp; Head Trainer</li>
+              <li><span className="text-primary font-bold">24/7 Gym Access Available</span></li>
             </ul>
           </div>
 
@@ -88,7 +86,7 @@ export function Footer() {
             &copy; {new Date().getFullYear()} Team Iron Fit Gym. All rights reserved.
           </p>
           <div className="flex gap-6">
-            <span className="text-xs text-muted-foreground font-semibold text-primary">made by Kartik Chhabra</span>
+            <span className="text-xs text-muted-foreground font-semibold text-primary">Website Designed &amp; Developed by Kartik Chhabra</span>
           </div>
         </div>
       </div>
