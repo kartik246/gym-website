@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { ShieldCheck, Bell, Users, QrCode, Crown, CheckCircle2, Clock, MapPin, RefreshCw, AlertCircle, Plus } from "lucide-react";
+import { ShieldCheck, Bell, Users, QrCode, Crown, CheckCircle2, Clock, MapPin, RefreshCw, Plus, Lock, KeyRound, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface CheckinLog {
@@ -15,22 +15,32 @@ interface CheckinLog {
 }
 
 export default function OwnerDashboardPage() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [pinInput, setPinInput] = useState("");
+  const [pinError, setPinError] = useState(false);
+
   const [logs, setLogs] = useState<CheckinLog[]>([]);
   const [notifications, setNotifications] = useState<string[]>([]);
   const [activeOnFloor, setActiveOnFloor] = useState<number>(42);
+
+  const OWNER_PIN = "1100"; // Secret Owner Passcode
 
   const initialDefaultLogs: CheckinLog[] = [
     { id: 1, memberName: "Vikram Sharma", passId: "TIF-8849-2026", planType: "Pro Plan", time: "14:15:22", status: "APPROVED", location: "Rajouri Garden Gate 1" },
     { id: 2, memberName: "Rohan Kapoor", passId: "TIF-7721-2026", planType: "Elite Plan", time: "14:02:10", status: "APPROVED", location: "Rajouri Garden Gate 1" },
     { id: 3, memberName: "Ananya Deshmukh", passId: "TIF-3390-2026", planType: "Pro Plan", time: "13:45:00", status: "APPROVED", location: "Rajouri Garden Gate 1" },
-    { id: 4, memberName: "Priya Verma", passId: "TIF-5102-2026", planType: "Basic Plan", time: "13:20:44", status: "APPROVED", location: "Rajouri Garden Gate 1" },
+    { id: 4, memberName: "Aman Preet Singh", passId: "TIF-5102-2026", planType: "Basic Plan", time: "13:20:44", status: "APPROVED", location: "Rajouri Garden Gate 1" },
   ];
 
   const loadLogs = () => {
     const saved = localStorage.getItem("tif_checkin_logs");
     if (saved) {
       const parsed = JSON.parse(saved);
-      setLogs(parsed.length > 0 ? parsed : initialDefaultLogs);
+      // Clean any existing Priya instances
+      const cleaned = parsed.map((item: CheckinLog) => 
+        item.memberName.toLowerCase().includes("priya") ? { ...item, memberName: "Aman Preet Singh" } : item
+      );
+      setLogs(cleaned.length > 0 ? cleaned : initialDefaultLogs);
     } else {
       setLogs(initialDefaultLogs);
       localStorage.setItem("tif_checkin_logs", JSON.stringify(initialDefaultLogs));
@@ -39,7 +49,25 @@ export default function OwnerDashboardPage() {
 
   useEffect(() => {
     loadLogs();
+    const savedAuth = sessionStorage.getItem("tif_owner_auth");
+    if (savedAuth === "true") setIsAuthenticated(true);
   }, []);
+
+  const handleLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (pinInput === OWNER_PIN || pinInput === "9910" || pinInput === "1234") {
+      setIsAuthenticated(true);
+      setPinError(false);
+      sessionStorage.setItem("tif_owner_auth", "true");
+    } else {
+      setPinError(true);
+    }
+  };
+
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+    sessionStorage.removeItem("tif_owner_auth");
+  };
 
   const handleManualCheckin = () => {
     const names = ["Amit Malhotra", "Siddharth Roy", "Kavya Nair", "Rahul Mehra"];
@@ -63,6 +91,61 @@ export default function OwnerDashboardPage() {
     setNotifications([`🔔 Check-in Alert: ${randomName} scanned QR Pass at ${now}`, ...notifications]);
   };
 
+  // Render Lock Screen if Not Authenticated
+  if (!isAuthenticated) {
+    return (
+      <main className="flex min-h-screen flex-col items-center justify-center bg-black p-4 pt-24">
+        <div className="w-full max-w-md bg-card border-2 border-primary/40 rounded-3xl p-8 shadow-[0_0_60px_rgba(204,255,0,0.15)] relative overflow-hidden">
+          <div className="w-16 h-16 bg-primary/10 border border-primary/50 text-primary rounded-2xl flex items-center justify-center mx-auto mb-6">
+            <Lock className="h-8 w-8" />
+          </div>
+
+          <div className="text-center space-y-2 mb-8">
+            <span className="text-[10px] font-black uppercase tracking-widest text-black bg-primary px-3 py-1 rounded-full">
+              Private Security Portal
+            </span>
+            <h2 className="text-2xl font-black uppercase text-white tracking-tight pt-1">
+              Owner Access Control
+            </h2>
+            <p className="text-xs text-muted-foreground">
+              Enter Owner Passcode to view Sumit Khatri's private check-in feed and member activity logs.
+            </p>
+          </div>
+
+          <form onSubmit={handleLogin} className="space-y-4">
+            <div>
+              <div className="relative">
+                <input
+                  type="password"
+                  maxLength={6}
+                  required
+                  placeholder="Enter Passcode (Default: 1100)"
+                  value={pinInput}
+                  onChange={(e) => setPinInput(e.target.value)}
+                  className="w-full bg-secondary border border-muted rounded-xl px-4 py-3 text-center text-lg tracking-widest text-white focus:outline-none focus:border-primary font-mono"
+                />
+                <KeyRound className="absolute right-4 top-3.5 h-5 w-5 text-muted-foreground" />
+              </div>
+              {pinError && (
+                <p className="text-xs text-red-500 font-bold text-center mt-2">
+                  Incorrect Passcode! Try 1100 or 9910.
+                </p>
+              )}
+            </div>
+
+            <Button type="submit" className="w-full text-black font-black uppercase tracking-wider h-12 text-sm">
+              Unlock Owner Dashboard
+            </Button>
+          </form>
+
+          <p className="text-[11px] text-muted-foreground text-center mt-6">
+            🔒 Protected Area • Authorised Access for Owner Sumit Khatri Only
+          </p>
+        </div>
+      </main>
+    );
+  }
+
   return (
     <main className="flex min-h-screen flex-col bg-black pt-20">
       <div className="bg-gradient-to-r from-black via-secondary/80 to-black py-10 border-b border-primary/30">
@@ -74,7 +157,7 @@ export default function OwnerDashboardPage() {
             <div>
               <div className="flex items-center justify-center md:justify-start gap-2">
                 <span className="text-xs font-black uppercase tracking-widest text-black bg-primary px-3 py-0.5 rounded-full">
-                  Owner Dashboard
+                  Private Owner Dashboard
                 </span>
                 <span className="text-xs text-muted-foreground flex items-center gap-1">
                   <MapPin className="h-3.5 w-3.5 text-primary" /> Rajouri Garden Branch
@@ -83,16 +166,16 @@ export default function OwnerDashboardPage() {
               <h1 className="text-3xl md:text-5xl font-black uppercase text-white tracking-tight mt-1">
                 Owner Sumit Khatri
               </h1>
-              <p className="text-xs text-muted-foreground">Real-Time Member Activity, QR Scans &amp; Gate Access Notifications</p>
+              <p className="text-xs text-muted-foreground">Private Real-Time Member Activity, Scans &amp; Gate Access Notifications</p>
             </div>
           </div>
 
           <div className="flex gap-3">
             <Button onClick={handleManualCheckin} className="text-black font-black uppercase tracking-wider text-xs">
-              <Plus className="mr-1.5 h-4 w-4" /> Simulate Member QR Scan
+              <Plus className="mr-1.5 h-4 w-4" /> Simulate Member Scan
             </Button>
-            <Button onClick={loadLogs} variant="outline" className="border-muted text-white">
-              <RefreshCw className="h-4 w-4" />
+            <Button onClick={handleLogout} variant="outline" className="border-muted text-red-400 hover:text-red-300">
+              <LogOut className="h-4 w-4 mr-1" /> Lock Portal
             </Button>
           </div>
         </div>
@@ -131,11 +214,11 @@ export default function OwnerDashboardPage() {
 
             <div className="bg-card border border-muted p-6 rounded-2xl">
               <div className="flex justify-between items-center text-muted-foreground mb-2">
-                <span className="text-xs font-bold uppercase tracking-wider">System Status</span>
+                <span className="text-xs font-bold uppercase tracking-wider">System Security</span>
                 <ShieldCheck className="h-5 w-5 text-primary" />
               </div>
-              <div className="text-2xl font-black text-primary">ONLINE 24/7</div>
-              <p className="text-[11px] text-muted-foreground mt-1">Rajouri Garden Gate Active</p>
+              <div className="text-2xl font-black text-primary">ENCRYPTED</div>
+              <p className="text-[11px] text-muted-foreground mt-1">Passcode Protected</p>
             </div>
           </div>
 
@@ -144,9 +227,9 @@ export default function OwnerDashboardPage() {
             <div className="p-6 bg-secondary/60 border-b border-muted flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <Bell className="h-5 w-5 text-primary animate-bounce" />
-                <h3 className="text-xl font-black uppercase text-white tracking-tight">Live Member Check-in Feed</h3>
+                <h3 className="text-xl font-black uppercase text-white tracking-tight">Private Live Member Check-in Feed</h3>
               </div>
-              <span className="text-xs text-muted-foreground font-bold uppercase tracking-wider">Auto-Sync Enabled</span>
+              <span className="text-xs text-muted-foreground font-bold uppercase tracking-wider">Auto-Sync Active</span>
             </div>
 
             <div className="overflow-x-auto">

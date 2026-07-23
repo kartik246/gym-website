@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { Menu, X, QrCode, Crown } from "lucide-react";
+import { Menu, X, QrCode, Crown, Lock } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface NavbarProps {
@@ -88,7 +88,7 @@ export function Navbar({ onOpenSignup }: NavbarProps) {
             );
           })}
 
-          {/* Special App Feature Links */}
+          {/* Member Access App Link */}
           <Link
             href="/member-pass"
             className="flex items-center gap-1.5 px-3 py-1.5 bg-secondary border border-muted hover:border-primary/50 text-white text-xs font-bold uppercase tracking-wider rounded-lg transition-all"
@@ -96,11 +96,12 @@ export function Navbar({ onOpenSignup }: NavbarProps) {
             <QrCode className="h-3.5 w-3.5 text-primary" /> QR Pass
           </Link>
 
+          {/* Owner Protected Link */}
           <Link
             href="/owner-dashboard"
             className="flex items-center gap-1.5 px-3 py-1.5 bg-primary/10 border border-primary/40 text-primary text-xs font-bold uppercase tracking-wider rounded-lg hover:bg-primary hover:text-black transition-all"
           >
-            <Crown className="h-3.5 w-3.5" /> Owner Portal
+            <Lock className="h-3.5 w-3.5" /> Owner Portal
           </Link>
 
           <Button size="sm" className="text-black font-black uppercase tracking-wider px-5" onClick={handleJoinClick}>
@@ -144,7 +145,7 @@ export function Navbar({ onOpenSignup }: NavbarProps) {
             onClick={() => setIsMobileMenuOpen(false)}
             className="flex items-center justify-center gap-2 py-3 bg-primary text-black font-black uppercase tracking-wider rounded-xl text-sm"
           >
-            <Crown className="h-4 w-4" /> Owner Sumit Khatri Dashboard
+            <Lock className="h-4 w-4" /> Owner Sumit Khatri Private Portal
           </Link>
         </div>
       )}
