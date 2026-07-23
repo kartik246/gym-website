@@ -2,8 +2,9 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, QrCode, Crown } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface NavbarProps {
@@ -11,18 +12,19 @@ interface NavbarProps {
 }
 
 const navLinks = [
-  { name: "Home", href: "#" },
-  { name: "Amenities", href: "#amenities" },
-  { name: "Schedule", href: "#schedule" },
-  { name: "Calculator", href: "#bmi-calc" },
-  { name: "Coaches", href: "#trainers" },
-  { name: "Results", href: "#results" },
-  { name: "Pricing", href: "#pricing" },
+  { name: "Home", href: "/" },
+  { name: "Amenities", href: "/amenities" },
+  { name: "Schedule", href: "/schedule" },
+  { name: "Calculator", href: "/calculator" },
+  { name: "Leadership", href: "/trainers" },
+  { name: "Pricing", href: "/pricing" },
+  { name: "Contact", href: "/contact" },
 ];
 
 export function Navbar({ onOpenSignup }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -36,8 +38,7 @@ export function Navbar({ onOpenSignup }: NavbarProps) {
     if (onOpenSignup) {
       onOpenSignup();
     } else {
-      const el = document.getElementById("pricing");
-      if (el) el.scrollIntoView({ behavior: "smooth" });
+      window.location.href = "/pricing";
     }
   };
 
@@ -45,7 +46,7 @@ export function Navbar({ onOpenSignup }: NavbarProps) {
     <nav
       className={cn(
         "fixed top-0 w-full z-40 transition-all duration-300 px-4 md:px-8 py-4",
-        isScrolled ? "bg-black/90 backdrop-blur-md border-b border-muted py-3 shadow-xl" : "bg-transparent"
+        isScrolled ? "bg-black/95 backdrop-blur-md border-b border-muted py-3 shadow-2xl" : "bg-transparent"
       )}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
@@ -68,17 +69,41 @@ export function Navbar({ onOpenSignup }: NavbarProps) {
         </Link>
 
         {/* Desktop Nav */}
-        <div className="hidden lg:flex items-center gap-6">
-          {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              href={link.href}
-              className="text-xs font-bold uppercase tracking-widest text-white/70 hover:text-primary transition-colors"
-            >
-              {link.name}
-            </Link>
-          ))}
-          <Button size="sm" className="text-black font-black uppercase tracking-wider px-6" onClick={handleJoinClick}>
+        <div className="hidden lg:flex items-center gap-5">
+          {navLinks.map((link) => {
+            const isActive = pathname === link.href;
+            return (
+              <Link
+                key={link.name}
+                href={link.href}
+                className={cn(
+                  "text-xs font-bold uppercase tracking-widest transition-colors py-1 border-b-2",
+                  isActive
+                    ? "text-primary border-primary font-black"
+                    : "text-white/70 border-transparent hover:text-primary"
+                )}
+              >
+                {link.name}
+              </Link>
+            );
+          })}
+
+          {/* Special App Feature Links */}
+          <Link
+            href="/member-pass"
+            className="flex items-center gap-1.5 px-3 py-1.5 bg-secondary border border-muted hover:border-primary/50 text-white text-xs font-bold uppercase tracking-wider rounded-lg transition-all"
+          >
+            <QrCode className="h-3.5 w-3.5 text-primary" /> QR Pass
+          </Link>
+
+          <Link
+            href="/owner-dashboard"
+            className="flex items-center gap-1.5 px-3 py-1.5 bg-primary/10 border border-primary/40 text-primary text-xs font-bold uppercase tracking-wider rounded-lg hover:bg-primary hover:text-black transition-all"
+          >
+            <Crown className="h-3.5 w-3.5" /> Owner Portal
+          </Link>
+
+          <Button size="sm" className="text-black font-black uppercase tracking-wider px-5" onClick={handleJoinClick}>
             Join Now
           </Button>
         </div>
@@ -94,7 +119,7 @@ export function Navbar({ onOpenSignup }: NavbarProps) {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="absolute top-full left-0 w-full bg-black/95 backdrop-blur-lg border-b border-muted p-6 flex flex-col gap-4 lg:hidden animate-in slide-in-from-top duration-300">
+        <div className="absolute top-full left-0 w-full bg-black/95 backdrop-blur-lg border-b border-muted p-6 flex flex-col gap-3 lg:hidden animate-in slide-in-from-top duration-300 max-h-[85vh] overflow-y-auto">
           {navLinks.map((link) => (
             <Link
               key={link.name}
@@ -105,15 +130,22 @@ export function Navbar({ onOpenSignup }: NavbarProps) {
               {link.name}
             </Link>
           ))}
-          <Button 
-            className="w-full text-black font-black uppercase tracking-wider mt-2" 
-            onClick={() => {
-              setIsMobileMenuOpen(false);
-              handleJoinClick();
-            }}
+
+          <Link
+            href="/member-pass"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="flex items-center justify-center gap-2 py-3 bg-secondary text-primary font-bold uppercase tracking-wider rounded-xl border border-primary/40 text-sm mt-2"
           >
-            Join Now
-          </Button>
+            <QrCode className="h-4 w-4" /> Member Digital QR Pass (APK)
+          </Link>
+
+          <Link
+            href="/owner-dashboard"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="flex items-center justify-center gap-2 py-3 bg-primary text-black font-black uppercase tracking-wider rounded-xl text-sm"
+          >
+            <Crown className="h-4 w-4" /> Owner Sumit Khatri Dashboard
+          </Link>
         </div>
       )}
     </nav>
