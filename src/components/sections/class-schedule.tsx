@@ -19,7 +19,7 @@ const classes = [
   {
     id: 2,
     name: "Cardio & High-Incline HIIT",
-    instructor: "Trainer Dipesh",
+    instructor: "Sumit Khatri",
     time: "08:30 AM - 09:30 AM",
     category: "Cardio",
     difficulty: "Intermediate",
@@ -28,7 +28,7 @@ const classes = [
   {
     id: 3,
     name: "Posture, Form & Mobility Clinic",
-    instructor: "Trainer Dipesh",
+    instructor: "Sumit Khatri",
     time: "05:00 PM - 06:00 PM",
     category: "Wellness",
     difficulty: "All Levels",
@@ -37,7 +37,7 @@ const classes = [
   {
     id: 4,
     name: "Spin Cycling Cadence Blast",
-    instructor: "Kartik Chhabra",
+    instructor: "Sumit Khatri",
     time: "06:30 PM - 07:30 PM",
     category: "Cardio",
     difficulty: "Intermediate",
@@ -59,7 +59,7 @@ const classes = [
     time: "09:00 PM - 10:00 PM",
     category: "Strength",
     difficulty: "Advanced",
-    image: "/images/gym/gym_real_7.jpg",
+    image: "/images/gym/gym_real_1.jpg",
   },
 ];
 

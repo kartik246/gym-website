@@ -44,8 +44,8 @@ export function Footer() {
           <div>
             <h4 className="text-white font-bold uppercase tracking-widest text-sm mb-6">Owner &amp; Timings</h4>
             <ul className="space-y-3 text-sm text-muted-foreground">
-              <li className="flex items-center gap-1.5"><Crown className="h-4 w-4 text-primary shrink-0" /><strong className="text-white">Sumit Khatri:</strong> Owner &amp; Head Coach</li>
-              <li><strong className="text-white">Trainer Dipesh:</strong> Senior Personal Trainer</li>
+              <li className="flex items-center gap-1.5"><Crown className="h-4 w-4 text-primary shrink-0" /><strong className="text-white">Sumit Khatri:</strong> Sole Owner &amp; Head Coach</li>
+              <li className="text-xs text-muted-foreground/80">Direct personal floor guidance &amp; customized nutrition</li>
               <li className="pt-2 border-t border-muted/50">
                 <span className="text-white font-bold block text-xs uppercase tracking-wider">Operating Hours:</span>
                 <span className="text-xs">Mon – Sat: 5:30 AM – 11:00 PM</span><br />

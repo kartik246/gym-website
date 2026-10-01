@@ -15,7 +15,7 @@ export function Hero({ onOpenSignup, onOpenTrailer }: HeroProps) {
       {/* Background Image with Dark Gradient Overlay */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         <img
-          src="/images/gym/gym_real_18.jpg"
+          src="/images/gym/main_1.jpg"
           alt="Team Iron Fit Gym Floor Interior"
           className="w-full h-full object-cover opacity-35 scale-105 filter brightness-90 contrast-125"
         />

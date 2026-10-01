@@ -263,7 +263,7 @@ export function MembershipModal({ isOpen, onClose, defaultPlan = "3 to 6-Month T
                           className="accent-primary h-4 w-4"
                         />
                         <span className="text-xs font-medium text-white">
-                          Interested in 1-on-1 Personal Training with Coach Sumit / Trainer Dipesh
+                          Interested in 1-on-1 Personal Training with Head Coach Sumit Khatri
                         </span>
                       </label>
                       <label className="flex items-center gap-3 p-3 bg-secondary rounded-xl cursor-pointer border border-muted hover:border-primary/40">

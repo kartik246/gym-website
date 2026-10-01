@@ -16,9 +16,8 @@
 | Detail | Information |
 | :--- | :--- |
 | **Gym Name** | **Team Iron Fit Gym & Food Supplements** |
-| **Owner & Head Coach** | **Sumit Khatri** (Certified Strength & Bodybuilding Coach) |
-| **Senior Personal Trainer** | **Trainer Dipesh** (Biomechanics & Form Specialist) |
-| **Strength Coach** | **Kartik Chhabra** (Powerlifting & Hypertrophy) |
+| **Sole Owner & Head Coach** | **Sumit Khatri** (Certified Strength & Bodybuilding Coach) |
+| **Coaching Model** | **Direct Personal Guidance** — Sumit Khatri handles all floor training, diet charts & gym management alone |
 | **Address** | GN4, Basement, Shivaji Enclave Extension, Near Khetarpal Nursing Home, Rajouri Garden, New Delhi, Delhi 110027 |
 | **Direct Phone Calls** | [`+91 99104 16468`](tel:+919910416468) / [`+91 98218 11951`](tel:+919821811951) |
 | **Official WhatsApp** | [`+91 99104 16468`](https://wa.me/919910416468?text=Hi%20Sumit%20ji%2C%20I%20want%20to%20know%20about%20current%20membership%20plans%20and%20offers%20at%20Team%20Iron%20Fit%20Gym) |

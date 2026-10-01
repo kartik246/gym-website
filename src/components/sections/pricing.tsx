@@ -51,7 +51,7 @@ const plans = [
     features: [
       "Full 12-month unlimited gym floor access",
       "Dedicated personal locker allocated",
-      "1-on-1 Personal Training with Sumit Khatri or Trainer Dipesh",
+      "1-on-1 Personal Training & Custom Splits with Sumit Khatri",
       "Periodic diet, workout splits & recovery cycle updates",
       "Special member discounts on in-house certified supplements",
     ],
@@ -166,12 +166,12 @@ export function Pricing({ onSelectPlan }: PricingProps) {
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
             <div className="lg:col-span-4 flex flex-col sm:flex-row items-center sm:items-start gap-5 text-center sm:text-left">
-              <div className="relative w-24 h-24 md:w-28 md:h-28 rounded-2xl overflow-hidden border-2 border-primary shrink-0 shadow-lg">
+              <div className="relative w-24 h-24 md:w-28 md:h-28 rounded-2xl overflow-hidden border-2 border-primary shrink-0 shadow-lg bg-black flex items-center justify-center p-1">
                 <Image
-                  src="/images/gym/gym_real_33.webp"
-                  alt="Sumit Khatri - Owner & Head Coach"
+                  src="/images/gym/official_logo.jpg"
+                  alt="Team Iron Fit Logo"
                   fill
-                  className="object-cover object-top"
+                  className="object-contain p-1"
                 />
               </div>
               <div>

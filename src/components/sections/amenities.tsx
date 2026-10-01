@@ -8,7 +8,7 @@ const amenities = [
     title: "Heavy Dumbbells & Free Weights",
     subtitle: "Pairs up to 40kg+ & Interlocking Rubber Mats",
     description: "Solid rubber-coated dumbbells, Olympic curl bars, adjustable incline & flat benches on heavy shock-absorbing tiles.",
-    image: "/images/gym/gym_real_7.jpg",
+    image: "/images/gym/gym_real_1.jpg",
     badge: "Free Weights",
     icon: Dumbbell,
   },
