@@ -23,7 +23,7 @@ export default function Home() {
     setIsSignupOpen(true);
   };
 
-  const whatsappUrl = "https://wa.me/919910416468?text=" + encodeURIComponent("Hi Sumit ji, I want to know about current membership plans and offers at Team Iron Fit Gym.");
+  const whatsappUrl = "https://wa.me/919910416468?text=" + encodeURIComponent("Hello Coach Sumit, I would like to know about current membership plans and offers at Team Iron Fit Gym.");
 
   return (
     <main className="flex min-h-screen flex-col bg-black">

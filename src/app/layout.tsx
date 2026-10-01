@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
-import { AppDownloadPopup } from "@/components/ui/app-download-popup";
 
 export const viewport: Viewport = {
   themeColor: "#CCFF00",
@@ -32,7 +31,6 @@ export default function RootLayout({
         <Navbar />
         {children}
         <Footer />
-        <AppDownloadPopup />
       </body>
     </html>
   );

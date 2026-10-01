@@ -55,7 +55,7 @@ export function MembershipModal({ isOpen, onClose, defaultPlan = "3 to 6-Month T
     onClose();
   };
 
-  const whatsappMessage = `Hi Sumit ji, my name is ${formData.name || "a visitor"}. I am interested in the "${selectedPlan}" at Team Iron Fit Gym. Please share the current membership offer and fee details.`;
+  const whatsappMessage = `Hello Coach Sumit, my name is ${formData.name || "a visitor"}. I am interested in the "${selectedPlan}" at Team Iron Fit Gym. Please share the current membership offer and fee details.`;
   const whatsappUrl = `https://wa.me/919910416468?text=${encodeURIComponent(whatsappMessage)}`;
 
   return (

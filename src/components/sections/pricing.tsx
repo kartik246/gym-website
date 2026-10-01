@@ -24,7 +24,7 @@ const plans = [
       "General floor trainer form guidance",
     ],
     highlight: false,
-    whatsappMsg: "Hi Sumit ji, I want to know the current monthly membership fee and details for Team Iron Fit Gym.",
+    whatsappMsg: "Hello Coach Sumit, I would like to know the current monthly membership fee and details for Team Iron Fit Gym.",
   },
   {
     name: "3 to 6-Month Transformation",
@@ -40,7 +40,7 @@ const plans = [
       "Free workout guidance & progress tracking",
     ],
     highlight: true,
-    whatsappMsg: "Hi Sumit ji, I am interested in the 3-Month / 6-Month Transformation Plan at Team Iron Fit Gym. Please share the current offer.",
+    whatsappMsg: "Hello Coach Sumit, I am interested in the 3-Month / 6-Month Transformation Plan at Team Iron Fit Gym. Please share the current offer.",
   },
   {
     name: "Annual Pro & 1-on-1 PT",
@@ -56,12 +56,12 @@ const plans = [
       "Special member discounts on in-house certified supplements",
     ],
     highlight: false,
-    whatsappMsg: "Hi Sumit ji, I am interested in the Annual Pro Plan & Personal Training at Team Iron Fit Gym. Please share the details.",
+    whatsappMsg: "Hello Coach Sumit, I am interested in the Annual Pro Plan & Personal Training at Team Iron Fit Gym. Please share the details.",
   },
 ];
 
 export function Pricing({ onSelectPlan }: PricingProps) {
-  const defaultWhatsApp = "https://wa.me/919910416468?text=" + encodeURIComponent("Hi Sumit ji, I want to know about current membership plans and offers at Team Iron Fit Gym.");
+  const defaultWhatsApp = "https://wa.me/919910416468?text=" + encodeURIComponent("Hello Coach Sumit, I would like to know about current membership plans and offers at Team Iron Fit Gym.");
 
   return (
     <section className="py-24 bg-secondary/50" id="pricing">
@@ -224,7 +224,7 @@ export function Pricing({ onSelectPlan }: PricingProps) {
                 <div className="w-12 h-12 rounded-full bg-white/10 text-white flex items-center justify-center mb-3 group-hover:bg-white group-hover:text-black transition-colors">
                   <MapPin className="h-6 w-6" />
                 </div>
-                <span className="text-xs font-black uppercase tracking-wider text-white">Mil Kar Baat Karein</span>
+                <span className="text-xs font-black uppercase tracking-wider text-white">Visit Gym in Person</span>
                 <span className="text-[11px] text-muted-foreground mt-1">Shivaji Enclave, Rajouri Garden</span>
                 <span className="text-[10px] text-white/80 font-bold mt-2">View on Google Maps →</span>
               </a>

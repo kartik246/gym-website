@@ -36,7 +36,7 @@ const testimonials = [
     role: "Transformation Client",
     avatar: "/images/avatars/vivek_kumar.jpg",
     tag: "Natural Body Re-composition",
-    quote: "Nice place, great vibe. Head coach Sumit paji is very humble and has deep knowledge — champion of global titles. Took PT for 6 months without any drugs or push selling of products. He made me look better with dedicated diet and focused training. 100% personal attention on floor.",
+    quote: "Nice place, great vibe. Head Coach Sumit is very humble and has deep knowledge — champion of global titles. Took PT for 6 months without any drugs or push selling of products. He made me look better with dedicated diet and focused training. 100% personal attention on floor.",
     source: "Google Maps Review",
     rating: 5,
   },

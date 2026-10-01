@@ -5,7 +5,7 @@ import { Dumbbell, Award, Flame, Crown, MessageCircle, Phone, MapPin, CheckCircl
 import Image from "next/image";
 
 export function Trainers() {
-  const whatsappUrl = "https://wa.me/919910416468?text=" + encodeURIComponent("Hi Sumit ji, I want to book a 1-on-1 consultation and training session at Team Iron Fit Gym.");
+  const whatsappUrl = "https://wa.me/919910416468?text=" + encodeURIComponent("Hello Coach Sumit, I would like to book a 1-on-1 consultation and training session at Team Iron Fit Gym.");
 
   const pillars = [
     {
