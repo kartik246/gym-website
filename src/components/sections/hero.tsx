@@ -15,11 +15,11 @@ export function Hero({ onOpenSignup, onOpenTrailer }: HeroProps) {
       {/* Background Image with Dark Gradient Overlay */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1920&q=80"
-          alt="Gym background"
-          className="w-full h-full object-cover opacity-25 scale-105 filter brightness-75 contrast-125"
+          src="/images/gym/gym_real_18.jpg"
+          alt="Team Iron Fit Gym Floor Interior"
+          className="w-full h-full object-cover opacity-35 scale-105 filter brightness-90 contrast-125"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/65 to-black" />
         <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black" />
       </div>
       
@@ -41,11 +41,16 @@ export function Hero({ onOpenSignup, onOpenTrailer }: HeroProps) {
           className="flex flex-wrap justify-center gap-2 mb-6"
         >
           <span className="inline-block px-4 py-1.5 text-xs font-black tracking-widest uppercase bg-primary text-black rounded-full shadow-[0_0_20px_rgba(204,255,0,0.4)]">
-            🔥 Team Iron Fit Gym
+            🔥 Team Iron Fit Gym &amp; Supplements
           </span>
-          <span className="inline-flex items-center gap-1 px-4 py-1.5 text-xs font-bold tracking-widest uppercase bg-secondary text-white rounded-full border border-muted">
-            <MapPin className="h-3.5 w-3.5 text-primary" /> Rajouri Garden, New Delhi
-          </span>
+          <a 
+            href="https://www.google.com/maps/place/Team+Iron+Fit+Gym/@28.6547085,77.119742,17z/data=!4m7!3m6!1s0x390d037d76251a5b:0xc97cbe46c6404d4a!8m2!3d28.6547085!4d77.119742!16s%2Fg%2F11r8n4zbh4"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1 px-4 py-1.5 text-xs font-bold tracking-widest uppercase bg-secondary hover:bg-secondary/80 text-white rounded-full border border-muted transition-colors"
+          >
+            <MapPin className="h-3.5 w-3.5 text-primary" /> Shivaji Enclave, Rajouri Garden, New Delhi
+          </a>
         </motion.div>
         
         <motion.h1
@@ -61,9 +66,9 @@ export function Hero({ onOpenSignup, onOpenTrailer }: HeroProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="max-w-[660px] text-muted-foreground text-base sm:text-lg md:text-xl mb-10 leading-relaxed font-medium"
+          className="max-w-[700px] text-muted-foreground text-base sm:text-lg md:text-xl mb-10 leading-relaxed font-medium"
         >
-          Welcome to <strong className="text-white">Team Iron Fit Gym</strong> in Shivaji Enclave, Rajouri Garden. Elite heavy iron, cardio arena, led by Owner &amp; Head Trainer <strong className="text-primary">Sumit Khatri</strong>.
+          Welcome to <strong className="text-white">Team Iron Fit Gym</strong> in Shivaji Enclave, Rajouri Garden. Real iron, heavy dumbbells up to 40kg, commercial cardio, and genuine results led by Owner &amp; Champion Coach <strong className="text-primary">Sumit Khatri</strong>.
         </motion.p>
 
         <motion.div
@@ -76,10 +81,12 @@ export function Hero({ onOpenSignup, onOpenTrailer }: HeroProps) {
             Join Team Iron Fit
             <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
           </Button>
-          <Button size="lg" variant="outline" className="h-14 px-8 border-muted text-white hover:border-primary" onClick={onOpenTrailer}>
-            <Play className="mr-2 h-5 w-5 fill-primary text-primary" />
-            Watch Facility Trailer
-          </Button>
+          <a href="#gallery">
+            <Button size="lg" variant="outline" className="h-14 px-8 border-muted text-white hover:border-primary w-full sm:w-auto">
+              <Play className="mr-2 h-5 w-5 fill-primary text-primary" />
+              View Real Gym Photos
+            </Button>
+          </a>
         </motion.div>
       </div>
 
@@ -91,8 +98,8 @@ export function Hero({ onOpenSignup, onOpenTrailer }: HeroProps) {
               <Users className="h-6 w-6" />
             </div>
             <div className="text-left">
-              <div className="text-2xl md:text-3xl font-black text-white">5,000+</div>
-              <div className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground">Active Members</div>
+              <div className="text-2xl md:text-3xl font-black text-white">1,200+</div>
+              <div className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground">Local Members</div>
             </div>
           </div>
 
@@ -101,8 +108,8 @@ export function Hero({ onOpenSignup, onOpenTrailer }: HeroProps) {
               <Trophy className="h-6 w-6" />
             </div>
             <div className="text-left">
-              <div className="text-2xl md:text-3xl font-black text-white">100%</div>
-              <div className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground">Owner Guided</div>
+              <div className="text-2xl md:text-3xl font-black text-white">Sumit Khatri</div>
+              <div className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground">Champion Head Coach</div>
             </div>
           </div>
 
@@ -111,8 +118,8 @@ export function Hero({ onOpenSignup, onOpenTrailer }: HeroProps) {
               <Flame className="h-6 w-6" />
             </div>
             <div className="text-left">
-              <div className="text-2xl md:text-3xl font-black text-white">50+</div>
-              <div className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground">Weekly Classes</div>
+              <div className="text-2xl md:text-3xl font-black text-white">40 kg+</div>
+              <div className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground">Heavy Free Iron</div>
             </div>
           </div>
 
@@ -122,7 +129,7 @@ export function Hero({ onOpenSignup, onOpenTrailer }: HeroProps) {
             </div>
             <div className="text-left">
               <div className="text-2xl md:text-3xl font-black text-white">4.9 ★</div>
-              <div className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground">Member Rating</div>
+              <div className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground">Google Maps (100+)</div>
             </div>
           </div>
         </div>

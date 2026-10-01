@@ -33,7 +33,7 @@ export function TrailerModal({ isOpen, onClose }: TrailerModalProps) {
             <iframe
               className="w-full h-full"
               src="https://www.youtube-nocookie.com/embed/eaRQF-7hhmo?autoplay=1&mute=0&controls=1&rel=0"
-              title="Power GYM Official Trailer"
+              title="Team Iron Fit Gym Official Facility Trailer"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
             />
@@ -44,11 +44,11 @@ export function TrailerModal({ isOpen, onClose }: TrailerModalProps) {
               <div className="flex items-center gap-2">
                 <Flame className="h-4 w-4 text-primary" />
                 <span className="text-xs font-black uppercase tracking-widest text-primary">
-                  Official Facility Trailer
+                  Official Facility Video
                 </span>
               </div>
               <h3 className="text-xl font-black uppercase text-white tracking-tight mt-1">
-                Push Your Limits — Experience Power GYM
+                Push Your Limits — Experience Team Iron Fit Gym
               </h3>
             </div>
 

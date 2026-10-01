@@ -17,7 +17,7 @@ interface CheckinLog {
 export default function OwnerDashboardPage() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [otpStep, setOtpStep] = useState<"phone" | "otp">("phone");
-  const [phoneNumber, setPhoneNumber] = useState("+91 83839 67686");
+  const [phoneNumber, setPhoneNumber] = useState("+91 99104 16468");
   const [generatedOtp, setGeneratedOtp] = useState("");
   const [otpInput, setOtpInput] = useState("");
   const [otpError, setOtpError] = useState(false);
@@ -197,7 +197,7 @@ export default function OwnerDashboardPage() {
           )}
 
           <p className="text-[11px] text-muted-foreground text-center mt-6">
-            🔒 SMS Verified Access • Owner Sumit Khatri (+91 83839 67686)
+            🔒 SMS Verified Access • Owner Sumit Khatri (+91 99104 16468)
           </p>
         </div>
       </main>
@@ -224,7 +224,7 @@ export default function OwnerDashboardPage() {
               <h1 className="text-3xl md:text-5xl font-black uppercase text-white tracking-tight mt-1">
                 Owner Sumit Khatri
               </h1>
-              <p className="text-xs text-muted-foreground">Mobile OTP Authenticated (+91 83839 67686) • Live Check-ins &amp; Gate Notifications</p>
+              <p className="text-xs text-muted-foreground">Mobile OTP Authenticated (+91 99104 16468) • Live Check-ins &amp; Gate Notifications</p>
             </div>
           </div>
 
@@ -276,7 +276,7 @@ export default function OwnerDashboardPage() {
                 <ShieldCheck className="h-5 w-5 text-primary" />
               </div>
               <div className="text-2xl font-black text-primary">SMS OTP VERIFIED</div>
-              <p className="text-[11px] text-muted-foreground mt-1">+91 83839 67686 Active</p>
+              <p className="text-[11px] text-muted-foreground mt-1">+91 99104 16468 Active</p>
             </div>
           </div>
 

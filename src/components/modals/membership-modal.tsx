@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Check, Dumbbell, ShieldCheck, Sparkles } from "lucide-react";
+import { X, Check, Dumbbell, ShieldCheck, Sparkles, MessageCircle, Phone, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface MembershipModalProps {
@@ -11,7 +11,7 @@ interface MembershipModalProps {
   defaultPlan?: string;
 }
 
-export function MembershipModal({ isOpen, onClose, defaultPlan = "Pro" }: MembershipModalProps) {
+export function MembershipModal({ isOpen, onClose, defaultPlan = "3 to 6-Month Transformation" }: MembershipModalProps) {
   const [selectedPlan, setSelectedPlan] = useState(defaultPlan);
   const [step, setStep] = useState<1 | 2>(1);
   const [formData, setFormData] = useState({
@@ -25,10 +25,19 @@ export function MembershipModal({ isOpen, onClose, defaultPlan = "Pro" }: Member
 
   if (!isOpen) return null;
 
-  const plansData: Record<string, { price: string; desc: string }> = {
-    Basic: { price: "1,499", desc: "Access to gym floor & standard lockers" },
-    Pro: { price: "2,999", desc: "24/7 Access + Unlimited Group Classes" },
-    Elite: { price: "4,999", desc: "All Pro Features + Spa & 4x Personal Training" },
+  const plansData: Record<string, { badge: string; desc: string }> = {
+    "Monthly General Pass": { 
+      badge: "Flexible Rate", 
+      desc: "Full floor access, heavy weights, cardio & crossfit" 
+    },
+    "3 to 6-Month Transformation": { 
+      badge: "Seasonal Offer", 
+      desc: "Unlimited access + custom natural diet & form assessment" 
+    },
+    "Annual Pro & 1-on-1 PT": { 
+      badge: "Best Value Deal", 
+      desc: "12 Months Full Access + dedicated coaching & VIP locker" 
+    },
   };
 
   const handleNext = (e: React.FormEvent) => {
@@ -46,6 +55,9 @@ export function MembershipModal({ isOpen, onClose, defaultPlan = "Pro" }: Member
     onClose();
   };
 
+  const whatsappMessage = `Hi Sumit ji, my name is ${formData.name || "a visitor"}. I am interested in the "${selectedPlan}" at Team Iron Fit Gym. Please share the current membership offer and fee details.`;
+  const whatsappUrl = `https://wa.me/919910416468?text=${encodeURIComponent(whatsappMessage)}`;
+
   return (
     <AnimatePresence>
       <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
@@ -53,7 +65,7 @@ export function MembershipModal({ isOpen, onClose, defaultPlan = "Pro" }: Member
           initial={{ opacity: 0, scale: 0.95, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 20 }}
-          className="bg-card border border-primary/30 w-full max-w-lg rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(204,255,0,0.15)] relative"
+          className="bg-card border border-primary/30 w-full max-w-lg rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(204,255,0,0.15)] relative max-h-[90vh] overflow-y-auto"
         >
           {/* Close Button */}
           <button
@@ -65,43 +77,80 @@ export function MembershipModal({ isOpen, onClose, defaultPlan = "Pro" }: Member
 
           {isSuccess ? (
             <div className="p-8 text-center space-y-6">
-              <div className="w-16 h-16 bg-primary/20 text-primary border border-primary rounded-full flex items-center justify-center mx-auto">
+              <div className="w-16 h-16 bg-[#25D366]/20 text-[#25D366] border border-[#25D366]/50 rounded-full flex items-center justify-center mx-auto">
                 <ShieldCheck className="h-8 w-8" />
               </div>
               <div>
-                <span className="text-xs font-black uppercase tracking-widest text-primary bg-primary/10 px-3 py-1 rounded-full">
-                  Registration Complete
+                <span className="text-xs font-black uppercase tracking-widest text-[#25D366] bg-[#25D366]/10 px-3 py-1 rounded-full border border-[#25D366]/20">
+                  Inquiry Pass Generated
                 </span>
                 <h3 className="text-3xl font-black uppercase text-white tracking-tight mt-4">
                   Welcome to Team Iron Fit!
                 </h3>
-                <p className="text-sm text-muted-foreground mt-2">
-                  Your pass for the <span className="text-primary font-bold">{selectedPlan} Plan</span> has been generated. Confirmation sent to {formData.email || "your email"}.
+                <p className="text-xs md:text-sm text-muted-foreground mt-2 leading-relaxed">
+                  Thank you, <strong className="text-white">{formData.name || "Athlete"}</strong>! Because gym fees and promotional discounts change regularly, Owner &amp; Head Coach <strong className="text-white">Sumit Khatri</strong> personally assists with current rates and packages.
                 </p>
               </div>
 
               <div className="p-4 bg-secondary rounded-xl text-xs space-y-2 text-left border border-muted">
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">Member:</span>
-                  <span className="font-bold text-white">{formData.name || "New Member"}</span>
+                  <span className="font-bold text-white">{formData.name || "New Inquirer"}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">Plan Selected:</span>
-                  <span className="font-bold text-primary">₹{plansData[selectedPlan]?.price} / month</span>
+                  <span className="font-bold text-primary">{selectedPlan}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-muted-foreground">Rate Status:</span>
+                  <span className="font-bold text-[#25D366]">Referral Discount Available</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">Location:</span>
                   <span className="font-bold text-white">Shivaji Enclave, Rajouri Garden</span>
                 </div>
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">Pass Code:</span>
-                  <span className="font-mono font-bold text-white">TIF-2026-X88</span>
-                </div>
               </div>
 
-              <Button className="w-full text-black font-black uppercase tracking-wider" onClick={resetAndClose}>
-                Done &amp; Close Pass
-              </Button>
+              {/* Direct Referral Buttons */}
+              <div className="space-y-3 pt-2">
+                <a
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full inline-flex items-center justify-center gap-2 h-12 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-black font-black text-xs uppercase tracking-wider transition-colors shadow-lg"
+                >
+                  <MessageCircle className="h-4 w-4" />
+                  Chat with Sumit on WhatsApp
+                </a>
+
+                <div className="grid grid-cols-2 gap-2">
+                  <a
+                    href="tel:+919910416468"
+                    className="inline-flex items-center justify-center gap-1.5 h-11 px-3 rounded-xl border border-muted hover:border-primary text-white font-bold text-xs uppercase transition-colors"
+                  >
+                    <Phone className="h-3.5 w-3.5 text-primary" />
+                    Call Sumit
+                  </a>
+
+                  <a
+                    href="https://www.google.com/maps/place/Team+Iron+Fit+Gym/@28.6547085,77.119742,17z/data=!4m7!3m6!1s0x390d037d76251a5b:0xc97cbe46c6404d4a!8m2!3d28.6547085!4d77.119742!16s%2Fg%2F11r8n4zbh4"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-1.5 h-11 px-3 rounded-xl border border-muted hover:border-white text-white font-bold text-xs uppercase transition-colors"
+                  >
+                    <MapPin className="h-3.5 w-3.5 text-white" />
+                    Visit Gym
+                  </a>
+                </div>
+
+                <Button 
+                  variant="ghost" 
+                  className="w-full text-xs text-muted-foreground hover:text-white uppercase tracking-wider" 
+                  onClick={resetAndClose}
+                >
+                  Close Pass
+                </Button>
+              </div>
             </div>
           ) : (
             <form onSubmit={handleNext}>
@@ -110,11 +159,11 @@ export function MembershipModal({ isOpen, onClose, defaultPlan = "Pro" }: Member
                 <div className="flex items-center gap-2">
                   <Dumbbell className="h-5 w-5 text-primary" />
                   <span className="text-xs font-black uppercase tracking-widest text-primary">
-                    Step {step} of 2 — Team Iron Fit Pass
+                    Step {step} of 2 — Team Iron Fit Inquiry Pass
                   </span>
                 </div>
                 <h3 className="text-2xl font-black uppercase text-white tracking-tight mt-1">
-                  {step === 1 ? "Choose Your Plan" : "Member Information"}
+                  {step === 1 ? "Choose Preferred Plan" : "Your Contact Details"}
                 </h3>
               </div>
 
@@ -123,7 +172,7 @@ export function MembershipModal({ isOpen, onClose, defaultPlan = "Pro" }: Member
                 {step === 1 ? (
                   <div className="space-y-4">
                     <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground block">
-                      Select Membership Tier
+                      Select Membership Category
                     </label>
                     {Object.entries(plansData).map(([planName, details]) => (
                       <div
@@ -138,9 +187,9 @@ export function MembershipModal({ isOpen, onClose, defaultPlan = "Pro" }: Member
                         <div>
                           <div className="flex items-center gap-2">
                             <span className="font-black uppercase tracking-tight text-base text-white">
-                              {planName} Plan
+                              {planName}
                             </span>
-                            {planName === "Pro" && (
+                            {planName.includes("Transformation") && (
                               <span className="text-[10px] font-black uppercase tracking-wider bg-primary text-black px-2 py-0.5 rounded">
                                 Recommended
                               </span>
@@ -148,12 +197,17 @@ export function MembershipModal({ isOpen, onClose, defaultPlan = "Pro" }: Member
                           </div>
                           <p className="text-xs text-muted-foreground mt-1">{details.desc}</p>
                         </div>
-                        <div className="text-right">
-                          <span className="text-xl font-black text-primary">₹{details.price}</span>
-                          <span className="text-[10px] block text-muted-foreground">/mo</span>
+                        <div className="text-right shrink-0 ml-3">
+                          <span className="text-xs font-black uppercase tracking-wider text-primary bg-primary/10 border border-primary/20 px-2 py-1 rounded-md block">
+                            {details.badge}
+                          </span>
                         </div>
                       </div>
                     ))}
+                    
+                    <p className="text-[11px] text-muted-foreground/80 text-center pt-2">
+                      💡 Pricing is customized with seasonal discounts. Coach Sumit Khatri will share exact options.
+                    </p>
                   </div>
                 ) : (
                   <div className="space-y-4">
@@ -164,7 +218,7 @@ export function MembershipModal({ isOpen, onClose, defaultPlan = "Pro" }: Member
                       <input
                         type="text"
                         required
-                        placeholder="John Doe"
+                        placeholder="e.g. Rahul Sharma"
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         className="w-full bg-secondary border border-muted rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-primary"
@@ -172,27 +226,26 @@ export function MembershipModal({ isOpen, onClose, defaultPlan = "Pro" }: Member
                     </div>
                     <div>
                       <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground block mb-1">
-                        Email Address *
+                        Phone Number (WhatsApp) *
                       </label>
                       <input
-                        type="email"
+                        type="tel"
                         required
-                        placeholder="john@example.com"
-                        value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        placeholder="+91 99104 16468"
+                        value={formData.phone}
+                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                         className="w-full bg-secondary border border-muted rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-primary"
                       />
                     </div>
                     <div>
                       <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground block mb-1">
-                        Phone Number *
+                        Email Address (Optional)
                       </label>
                       <input
-                        type="tel"
-                        required
-                        placeholder="+91 83839 67686"
-                        value={formData.phone}
-                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                        type="email"
+                        placeholder="name@example.com"
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         className="w-full bg-secondary border border-muted rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-primary"
                       />
                     </div>
@@ -200,7 +253,7 @@ export function MembershipModal({ isOpen, onClose, defaultPlan = "Pro" }: Member
                     {/* Add-ons */}
                     <div className="pt-2">
                       <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground block mb-2">
-                        Optional Add-ons
+                        Preferences &amp; Interests
                       </label>
                       <label className="flex items-center gap-3 p-3 bg-secondary rounded-xl cursor-pointer border border-muted hover:border-primary/40 mb-2">
                         <input
@@ -210,7 +263,7 @@ export function MembershipModal({ isOpen, onClose, defaultPlan = "Pro" }: Member
                           className="accent-primary h-4 w-4"
                         />
                         <span className="text-xs font-medium text-white">
-                          Personal Trainer (Sumit / Kartik) (+₹499)
+                          Interested in 1-on-1 Personal Training with Coach Sumit / Trainer Dipesh
                         </span>
                       </label>
                       <label className="flex items-center gap-3 p-3 bg-secondary rounded-xl cursor-pointer border border-muted hover:border-primary/40">
@@ -221,7 +274,7 @@ export function MembershipModal({ isOpen, onClose, defaultPlan = "Pro" }: Member
                           className="accent-primary h-4 w-4"
                         />
                         <span className="text-xs font-medium text-white">
-                          Dedicated VIP Locker (+₹299/mo)
+                          Interested in Dedicated Personal Locker &amp; Supplements Advice
                         </span>
                       </label>
                     </div>
@@ -241,7 +294,7 @@ export function MembershipModal({ isOpen, onClose, defaultPlan = "Pro" }: Member
                   </button>
                 )}
                 <Button className="ml-auto text-black font-black uppercase tracking-wider">
-                  {step === 1 ? "Continue to Details →" : "Confirm & Claim Membership"}
+                  {step === 1 ? "Continue to Details →" : "Connect with Sumit Khatri →"}
                 </Button>
               </div>
             </form>

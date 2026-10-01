@@ -1,9 +1,10 @@
 import { Amenities } from "@/components/sections/amenities";
+import { Gallery } from "@/components/sections/gallery";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Facilities & Equipment | Team Iron Fit Gym Rajouri Garden",
-  description: "Explore our 15,000 sq ft facility featuring 5kg-75kg dumbbell racks, Eleiko power cages, cardio arena, and recovery spa lounge.",
+  title: "Real Gym Photos & Equipment | Team Iron Fit Gym Rajouri Garden",
+  description: "Explore authentic photos of Team Iron Fit Gym at Shivaji Enclave, featuring heavy dumbbells up to 40kg+, NORTUS Smith machines, 45° leg press, cardio treadmills, and spin bikes.",
 };
 
 export default function AmenitiesPage() {
@@ -23,6 +24,7 @@ export default function AmenitiesPage() {
         </div>
       </div>
       <Amenities />
+      <Gallery />
     </main>
   );
 }

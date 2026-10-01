@@ -34,6 +34,7 @@ export function Footer() {
             <h4 className="text-white font-bold uppercase tracking-widest text-sm mb-6">Quick Navigation</h4>
             <ul className="space-y-4">
               <li><Link href="#amenities" className="text-sm text-muted-foreground hover:text-primary transition-colors">Amenities &amp; Iron Zone</Link></li>
+              <li><Link href="#gallery" className="text-sm text-muted-foreground hover:text-primary transition-colors">Real Facility Photos</Link></li>
               <li><Link href="#schedule" className="text-sm text-muted-foreground hover:text-primary transition-colors">Class Timetable</Link></li>
               <li><Link href="#trainers" className="text-sm text-muted-foreground hover:text-primary transition-colors">Leadership &amp; Owner</Link></li>
               <li><Link href="#pricing" className="text-sm text-muted-foreground hover:text-primary transition-colors">Membership Plans</Link></li>
@@ -41,10 +42,15 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="text-white font-bold uppercase tracking-widest text-sm mb-6">Owner &amp; Leadership</h4>
-            <ul className="space-y-4 text-sm text-muted-foreground">
-              <li className="flex items-center gap-1.5"><Crown className="h-4 w-4 text-primary shrink-0" /><strong className="text-white">Sumit Khatri:</strong> Owner &amp; Head Trainer</li>
-              <li><span className="text-primary font-bold">24/7 Gym Access Available</span></li>
+            <h4 className="text-white font-bold uppercase tracking-widest text-sm mb-6">Owner &amp; Timings</h4>
+            <ul className="space-y-3 text-sm text-muted-foreground">
+              <li className="flex items-center gap-1.5"><Crown className="h-4 w-4 text-primary shrink-0" /><strong className="text-white">Sumit Khatri:</strong> Owner &amp; Head Coach</li>
+              <li><strong className="text-white">Trainer Dipesh:</strong> Senior Personal Trainer</li>
+              <li className="pt-2 border-t border-muted/50">
+                <span className="text-white font-bold block text-xs uppercase tracking-wider">Operating Hours:</span>
+                <span className="text-xs">Mon – Sat: 5:30 AM – 11:00 PM</span><br />
+                <span className="text-xs">Sunday: 8:00 AM – 12:00 PM &amp; 4:00 PM – 8:00 PM</span>
+              </li>
             </ul>
           </div>
 
@@ -60,7 +66,7 @@ export function Footer() {
 
               <div className="pt-1">
                 <a
-                  href="https://maps.app.goo.gl/8pCV18VA9aVFsdoC9"
+                  href="https://www.google.com/maps/place/Team+Iron+Fit+Gym/@28.6547085,77.119742,17z/data=!4m7!3m6!1s0x390d037d76251a5b:0xc97cbe46c6404d4a!8m2!3d28.6547085!4d77.119742!16s%2Fg%2F11r8n4zbh4"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-primary hover:underline"
@@ -71,7 +77,11 @@ export function Footer() {
 
               <div className="flex items-center gap-2 pt-2 border-t border-muted/50">
                 <Phone className="h-4 w-4 text-primary shrink-0" />
-                <a href="tel:+918383967686" className="hover:text-primary transition-colors font-bold text-white">+91 83839 67686</a>
+                <a href="tel:+919910416468" className="hover:text-primary transition-colors font-bold text-white">+91 99104 16468</a>
+              </div>
+              <div className="flex items-center gap-2 text-xs">
+                <span className="text-muted-foreground">Alt WhatsApp:</span>
+                <a href="https://wa.me/919821811951" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors font-bold text-white">+91 98218 11951</a>
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="h-4 w-4 text-primary shrink-0" />

@@ -44,7 +44,7 @@ export default function MemberPassPage() {
       <div className="bg-secondary/40 py-12 border-b border-muted">
         <div className="container px-4 md:px-6 mx-auto text-center">
           <span className="text-xs font-black uppercase tracking-widest text-primary bg-primary/10 px-4 py-1.5 rounded-full">
-            Member Mobile Access APK / QR System
+            Member Mobile Access Digital QR System
           </span>
           <h1 className="text-4xl md:text-6xl font-black uppercase text-white tracking-tight mt-4">
             Digital QR Access Pass
@@ -164,7 +164,7 @@ export default function MemberPassPage() {
                   <Link href="/owner-dashboard" className="text-primary hover:underline font-bold flex items-center gap-1">
                     View Owner Dashboard <ArrowRight className="h-3.5 w-3.5" />
                   </Link>
-                  <span className="text-muted-foreground">APK Scanner Ready</span>
+                  <span className="text-muted-foreground">Digital Pass Ready</span>
                 </div>
               </div>
             </div>

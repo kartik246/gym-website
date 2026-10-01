@@ -13,6 +13,7 @@ interface NavbarProps {
 
 const navLinks = [
   { name: "Home", href: "/" },
+  { name: "Photos", href: "/#gallery" },
   { name: "Amenities", href: "/amenities" },
   { name: "Schedule", href: "/schedule" },
   { name: "Calculator", href: "/calculator" },
@@ -137,7 +138,7 @@ export function Navbar({ onOpenSignup }: NavbarProps) {
             onClick={() => setIsMobileMenuOpen(false)}
             className="flex items-center justify-center gap-2 py-3 bg-secondary text-primary font-bold uppercase tracking-wider rounded-xl border border-primary/40 text-sm mt-2"
           >
-            <QrCode className="h-4 w-4" /> Member Digital QR Pass (APK)
+            <QrCode className="h-4 w-4" /> Member Digital QR Pass
           </Link>
 
           <Link

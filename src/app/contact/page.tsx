@@ -55,7 +55,7 @@ export default function ContactPage() {
                       Rajouri Garden, New Delhi, Delhi 110027
                     </p>
                     <a
-                      href="https://maps.app.goo.gl/8pCV18VA9aVFsdoC9"
+                      href="https://www.google.com/maps/place/Team+Iron+Fit+Gym/@28.6547085,77.119742,17z/data=!4m7!3m6!1s0x390d037d76251a5b:0xc97cbe46c6404d4a!8m2!3d28.6547085!4d77.119742!16s%2Fg%2F11r8n4zbh4"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-primary mt-2 hover:underline"
@@ -65,15 +65,28 @@ export default function ContactPage() {
                   </div>
                 </div>
 
-                <div className="flex items-center gap-4 py-4 border-y border-muted">
+                <div className="flex items-start gap-4 py-4 border-y border-muted">
                   <div className="p-3 bg-primary/10 text-primary rounded-xl shrink-0">
                     <Phone className="h-5 w-5" />
                   </div>
-                  <div>
-                    <strong className="text-white block uppercase text-xs tracking-wider">Phone / WhatsApp</strong>
-                    <a href="tel:+918383967686" className="text-lg font-black text-primary hover:underline">
-                      +91 83839 67686
-                    </a>
+                  <div className="space-y-1">
+                    <strong className="text-white block uppercase text-xs tracking-wider">Phone &amp; WhatsApp</strong>
+                    <div className="flex flex-col gap-1">
+                      <a href="tel:+919910416468" className="text-lg font-black text-primary hover:underline">
+                        +91 99104 16468
+                      </a>
+                      <a href="tel:+919821811951" className="text-sm font-bold text-white hover:text-primary">
+                        +91 98218 11951
+                      </a>
+                      <a 
+                        href="https://wa.me/919910416468?text=Hi%20Team%20Iron%20Fit%20Gym%2C%20I%20want%20to%20inquire%20about%20membership" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 text-xs text-primary font-bold hover:underline mt-1"
+                      >
+                        💬 Chat Directly on WhatsApp →
+                      </a>
+                    </div>
                   </div>
                 </div>
 
@@ -84,8 +97,8 @@ export default function ContactPage() {
                   <div>
                     <strong className="text-white block uppercase text-xs tracking-wider">Operating Hours</strong>
                     <p className="text-muted-foreground text-xs mt-1">
-                      Mon – Sat: 05:30 AM – 10:30 PM<br />
-                      Sunday: 07:00 AM – 02:00 PM (24/7 Access for Pro/Elite)
+                      Mon – Sat: 05:30 AM – 11:00 PM<br />
+                      Sunday: 08:00 AM – 12:00 PM &amp; 04:00 PM – 08:00 PM
                     </p>
                   </div>
                 </div>
@@ -122,7 +135,7 @@ export default function ContactPage() {
                     <input
                       type="tel"
                       required
-                      placeholder="+91 83839 67686"
+                      placeholder="+91 99104 16468"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       className="w-full bg-black border border-muted rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-primary"
