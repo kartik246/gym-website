@@ -8,10 +8,10 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           <div className="space-y-4">
             <Link href="/" className="flex items-center gap-3">
-              <div className="relative flex items-center justify-center w-10 h-10 rounded-xl overflow-hidden border border-primary/50 bg-black p-0.5 shadow-[0_0_15px_rgba(204,255,0,0.2)]">
+              <div className="relative flex items-center justify-center w-12 h-12 rounded-xl overflow-hidden border border-primary/50 bg-black p-0.5 shadow-[0_0_15px_rgba(204,255,0,0.2)] shrink-0">
                 <img 
-                  src="/logo.svg" 
-                  alt="Team Iron Fit Gym Logo" 
+                  src="/images/gym/official_logo.jpg" 
+                  alt="Team Iron Fit Gym Official Logo" 
                   className="w-full h-full object-contain"
                 />
               </div>

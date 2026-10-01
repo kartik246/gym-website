@@ -67,8 +67,8 @@ export default function MemberPassPage() {
               {/* Pass Header */}
               <div className="flex items-center justify-between border-b border-muted/80 pb-6">
                 <div className="flex items-center gap-2.5">
-                  <div className="w-9 h-9 rounded-xl border border-primary/50 bg-black p-0.5">
-                    <img src="/logo.svg" alt="Logo" className="w-full h-full object-contain" />
+                  <div className="w-10 h-10 rounded-xl border border-primary/50 bg-black p-0.5 overflow-hidden shrink-0">
+                    <img src="/images/gym/official_logo.jpg" alt="Team Iron Fit Official Logo" className="w-full h-full object-contain" />
                   </div>
                   <div>
                     <h3 className="font-black uppercase tracking-tighter text-lg text-white">Team Iron<span className="text-primary">Fit</span></h3>
